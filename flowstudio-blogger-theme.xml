@@ -1,0 +1,1649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<script>
+//<![CDATA[
+
+(function(){try{var t=localStorage.getItem("fs-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();
+
+//]]>
+</script>
+<meta name="description" content="FlowStudio — multi-account AI video generation for Windows. Batch prompts, parallel accounts, automatic downloads." />
+<link rel="icon" href="data:," />
+<title>FlowStudio — Official Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin='' />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Outfit:wght@400;500;600;700&amp;family=Lora:ital,wght@0,500;0,600;1,500;1,600&amp;display=swap" rel="stylesheet" />
+<b:skin><![CDATA[
+
+  :root{
+    --bg:#0B0B10; --bg2:#101016; --bg3:#14141C; --panel:#14141C;
+    --violet:#7C5CFF; --cyan:#22C3E6; --amber:#F5B83D; --pink:#FF6B9D; --green:#3ED598;
+    --ink:#F7F3E8; --muted:#C9C4B4; --faint:#97917F;
+    --glass:#14141C; --glass2:#1B1B24;
+    --line:#26262F;
+    --gold-grad:linear-gradient(120deg,#F2B544,#DD941F);
+    --text-grad:linear-gradient(92deg,#F2B544 0%,#22C3E6 55%,#A78BFF 100%);
+    --radius:20px;
+    --btn-radius:14px;
+    --panel-grad:linear-gradient(180deg,#1C1C26 0%,#14141C 100%);
+    --panel-grad-soft:linear-gradient(180deg,#191922 0%,#12121A 100%);
+    --panel-shadow:0 14px 34px rgba(0,0,0,.38), 0 2px 10px rgba(0,0,0,.28);
+    --panel-shadow-lift:0 22px 48px rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.3);
+    --gold-text:#FFCE54;
+    --gold-glow:0 10px 28px rgba(245,184,61,.35);
+    --font-d:"Bricolage Grotesque",system-ui,sans-serif;
+    --font-b:"Outfit",system-ui,sans-serif;
+  }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 55%,var(--bg) 100%);
+    color:var(--ink); font-family:var(--font-b); font-size:17px; line-height:1.6;
+    overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  #progressBar{ position:fixed; top:0; left:0; height:3px; width:0%; z-index:100; background:linear-gradient(90deg,#F2B544,#DD941F,#22C3E6); box-shadow:0 0 12px rgba(245,184,61,.7); }
+  a:focus-visible, button:focus-visible, textarea:focus-visible{ outline:2px solid #F5B83D; outline-offset:3px; box-shadow:0 0 0 4px rgba(245,184,61,.22); }
+  section{ scroll-margin-top:84px; }
+  .page-sec{ min-height:60vh; }
+  .wash{ position:absolute; inset:0; pointer-events:none; opacity:.5; }
+  .live-tag{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#0B0B10; background:linear-gradient(120deg,#F2B544,#DD941F); padding:6px 12px; border-radius:999px; }
+  .live-tag i{ width:8px;height:8px;border-radius:50%;background:#0B0B10; animation:pulse-dot 1.6s infinite; }
+  .models-table{ width:100%; border-collapse:collapse; margin-top:26px; background:var(--panel-grad); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--panel-shadow); }
+  .models-table th,.models-table td{ text-align:left; padding:14px 16px; border-bottom:1px solid var(--line); font-size:15px; }
+  .models-table th{ font-family:var(--font-d); color:#FFCE54; background:#1B1B24; }
+  .models-table tr:last-child td{ border-bottom:none; }
+  .tut-acc{ margin-top:36px; display:flex; flex-direction:column; gap:12px; }
+  .tut-acc .faq ol{ margin:0; padding:0 20px 19px 40px; list-style:decimal; color:var(--muted); font-size:15.5px; display:flex; flex-direction:column; gap:6px; }
+  .req-grid,.legal-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:36px; }
+  .req-card,.legal-card{ background:var(--panel-grad); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:var(--panel-shadow); }
+  .req-card h3,.legal-card h3{ font-family:var(--font-d); font-size:19px; margin-bottom:10px; }
+  .req-card li,.legal-card p,.legal-card li{ color:var(--muted); font-size:15px; }
+  .req-card ul{ display:flex; flex-direction:column; gap:8px; }
+  .changelog-list{ margin-top:36px; display:flex; flex-direction:column; gap:14px; }
+  .change{ background:var(--panel-grad); border:1px solid var(--line); border-radius:18px; padding:22px 24px; display:grid; grid-template-columns:120px 1fr; gap:18px; box-shadow:var(--panel-shadow); }
+  .change .ver-badge{ font-family:var(--font-d); font-weight:800; font-size:20px; color:#FFCE54; }
+  .change .ver-badge span{ display:block; font-family:var(--font-b); font-weight:600; font-size:13px; color:var(--faint); margin-top:4px; }
+  .change ul{ display:flex; flex-direction:column; gap:6px; color:var(--muted); font-size:15px; list-style:disc; padding-left:18px; }
+  .activity-table{ width:100%; border-collapse:collapse; margin-top:16px; font-size:13.5px; }
+  .activity-table th,.activity-table td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); }
+  .activity-table th{ color:var(--faint); font-weight:700; }
+  .st-ok{ color:#3ED598; font-weight:700; } .st-wait{ color:#FFCE54; font-weight:700; }
+  @media (max-width:680px){ .req-grid,.legal-grid{ grid-template-columns:1fr; } .change{ grid-template-columns:1fr; } .activity-wrap{ overflow-x:auto; } }
+  h1,h2,h3,h4,p,ul,ol,figure{ margin:0; }
+  ul,ol{ padding:0; list-style:none; }
+  a{ color:inherit; }
+  img,svg{ display:block; }
+  button{ font-family:inherit; cursor:pointer; }
+  ::selection{ background:var(--violet); color:#fff; }
+
+  /* ---------- living aurora background ---------- */
+  .aurora{ position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
+  .blob{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.5; will-change:transform; }
+  .blob.b1{ width:560px;height:560px; background:radial-gradient(circle at 35% 35%, #7C5CFF, transparent 68%); top:-160px; left:-120px; animation:drift1 26s ease-in-out infinite alternate; }
+  .blob.b2{ width:520px;height:520px; background:radial-gradient(circle at 60% 40%, #22C3E6, transparent 68%); top:12%; right:-200px; opacity:.38; animation:drift2 32s ease-in-out infinite alternate; }
+  .blob.b3{ width:460px;height:460px; background:radial-gradient(circle at 50% 50%, #FF6B9D, transparent 68%); top:52%; left:-180px; opacity:.30; animation:drift1 38s ease-in-out infinite alternate-reverse; }
+  .blob.b4{ width:480px;height:480px; background:radial-gradient(circle at 50% 50%, #F5B83D, transparent 68%); bottom:-200px; right:-120px; opacity:.26; animation:drift2 30s ease-in-out infinite alternate-reverse; }
+  @keyframes drift1{ from{ transform:translate(0,0) scale(1);} to{ transform:translate(90px,60px) scale(1.14);} }
+  @keyframes drift2{ from{ transform:translate(0,0) scale(1.08);} to{ transform:translate(-80px,90px) scale(.94);} }
+  .grain{ position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size:26px 26px; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 20px; }
+  section{ padding:88px 0 8px; position:relative; }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:60;
+    backdrop-filter:blur(16px) saturate(1.4); -webkit-backdrop-filter:blur(16px) saturate(1.4);
+    background:rgba(11,11,16,.78); border-bottom:1px solid var(--line);
+  }
+  .nav-in{ display:flex; align-items:center; gap:14px; padding:10px 0; flex-wrap:wrap; }
+  .brand{ display:flex; align-items:center; gap:11px; text-decoration:none; font-family:var(--font-d); font-weight:800; font-size:21px; letter-spacing:.2px; padding:6px 4px; min-height:44px; flex:none; }
+  .brand .grad{ background:var(--text-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  /* ----- app pill tabs: dark track + sliding gold indicator ----- */
+  .nav-links{
+    position:relative; display:flex; gap:2px; margin-left:auto; flex-wrap:nowrap;
+    background:#14141C; border:1px solid #26262F; border-radius:999px; padding:4px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 26px rgba(0,0,0,.32);
+    max-width:100%;
+  }
+  .tab-indicator{
+    position:absolute; top:4px; left:0; height:calc(100% - 8px); width:0;
+    background:linear-gradient(120deg,#F2B544,#DD941F); border-radius:999px;
+    box-shadow:0 6px 18px rgba(245,184,61,.45);
+    transition:left .38s cubic-bezier(.3,.9,.25,1), width .38s cubic-bezier(.3,.9,.25,1), opacity .25s;
+    opacity:0; pointer-events:none; z-index:0;
+  }
+  .nav-links a{
+    position:relative; z-index:1; text-decoration:none; color:var(--muted); font-weight:600; font-size:14.5px;
+    padding:9px 14px; border-radius:999px; min-height:38px; display:inline-flex; align-items:center; white-space:nowrap;
+    transition:color .25s;
+  }
+  .nav-links a:hover{ color:#fff; }
+  .nav-links a.active{ color:#241A02; font-weight:700; }
+  .nav-cta{
+    position:relative; overflow:hidden; margin-left:4px; text-decoration:none; font-weight:700; font-size:15px; color:#241A02;
+    background:var(--gold-grad); padding:12px 20px; border-radius:var(--btn-radius); min-height:48px; flex:none;
+    display:inline-flex; align-items:center; box-shadow:var(--gold-glow);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(245,184,61,.45); }
+  .nav-cta::after{
+    content:""; position:absolute; top:0; left:-70%; width:45%; height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg); animation:shine 3.4s ease-in-out infinite;
+  }
+
+  /* logo mark */
+  .logo-mark{ flex:none; filter:drop-shadow(0 6px 18px rgba(245,184,61,.35)); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:64px 0 30px; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--ink);
+    background:var(--panel-grad); border:1px solid var(--line); border-radius:999px; padding:7px 14px; box-shadow:var(--panel-shadow);
+  }
+  .pill .dot{ width:8px;height:8px;border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(62,213,152,.6); animation:pulse-dot 2s infinite; }
+  @keyframes pulse-dot{ 0%{ box-shadow:0 0 0 0 rgba(62,213,152,.55);} 70%{ box-shadow:0 0 0 9px rgba(62,213,152,0);} 100%{ box-shadow:0 0 0 0 rgba(62,213,152,0);} }
+  h1{
+    font-family:var(--font-d); font-weight:800; line-height:1.04; letter-spacing:-.5px;
+    font-size:clamp(40px,6.2vw,66px); margin-top:20px;
+  }
+  h1 .grad{ background:var(--text-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero-sub{ color:var(--muted); font-size:19px; max-width:34em; margin-top:18px; }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; align-items:center; }
+  .btn-gold{
+    position:relative; overflow:hidden; text-decoration:none; color:#241A02; font-weight:700; font-size:16.5px;
+    background:var(--gold-grad); padding:14px 26px; border-radius:var(--btn-radius); min-height:52px; border:none;
+    display:inline-flex; align-items:center; justify-content:center; gap:10px; box-shadow:var(--gold-glow);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 18px 42px rgba(245,184,61,.5); }
+  .btn-gold::after{
+    content:""; position:absolute; top:0; left:-70%; width:45%; height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg); animation:shine 3.4s ease-in-out infinite;
+  }
+  @keyframes shine{ 0%,55%{ left:-70%; } 85%,100%{ left:130%; } }
+  .btn-ghost{
+    text-decoration:none; font-weight:700; color:var(--gold-text); padding:14px 22px; min-height:52px;
+    display:inline-flex; align-items:center; justify-content:center; gap:9px; border-radius:var(--btn-radius);
+    background:var(--panel-grad); border:1px solid var(--line); box-shadow:var(--panel-shadow);
+    transition:border-color .25s, transform .25s, box-shadow .25s;
+  }
+  .btn-ghost:hover{ border-color:rgba(245,184,61,.55); transform:translateY(-3px); box-shadow:var(--panel-shadow-lift); }
+  .hero-note{ color:var(--faint); font-size:14px; margin-top:14px; }
+
+  /* ---------- mini demo (hero) ---------- */
+  .mini-shell{
+    background:linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    border:1px solid var(--line); border-radius:26px; padding:14px;
+    box-shadow:0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(124,92,255,.12), 0 24px 70px -30px rgba(124,92,255,.55);
+  }
+  .mini-bar{ display:flex; align-items:center; gap:7px; padding:2px 6px 12px; }
+  .mini-bar i{ width:11px;height:11px;border-radius:50%; display:block; }
+  .mini-bar .t{ margin-left:8px; font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.4px; }
+  .mini-stage{ position:relative; height:308px; border-radius:18px; overflow:hidden; background:radial-gradient(120% 130% at 20% 0%, #241B52 0%, #14102E 55%, #0D0B1E 100%); }
+  .scene{ position:absolute; inset:0; padding:22px; opacity:0; transform:translateY(14px) scale(.985); transition:opacity .55s ease, transform .55s ease; pointer-events:none; }
+  .scene.on{ opacity:1; transform:none; pointer-events:auto; }
+  .scene-splash{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; }
+  .splash-logo{ animation:logo-pulse 1.6s ease-in-out infinite; }
+  @keyframes logo-pulse{ 0%,100%{ transform:scale(1); filter:drop-shadow(0 0 0 rgba(245,184,61,0)); } 50%{ transform:scale(1.07); filter:drop-shadow(0 0 22px rgba(245,184,61,.55)); } }
+  .scene-splash .nm{ font-family:var(--font-d); font-weight:800; font-size:24px; }
+  .scene-splash .st{ color:var(--muted); font-size:13.5px; min-height:20px; }
+  .loadbar{ width:190px; height:6px; border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden; }
+  .loadbar i{ display:block; height:100%; width:0; border-radius:99px; background:var(--gold-grad); }
+  .scene.on .loadbar i{ animation:load 2.6s ease forwards; }
+  @keyframes load{ from{ width:4%; } to{ width:100%; } }
+  .portal-card{
+    max-width:300px; margin:14px auto 0; background:rgba(16,13,36,.82); border:1px solid var(--line);
+    border-radius:18px; padding:20px; backdrop-filter:blur(8px); box-shadow:0 24px 50px rgba(0,0,0,.5);
+  }
+  .portal-card h4{ font-family:var(--font-d); font-size:18px; text-align:center; }
+  .portal-card .sub{ text-align:center; color:var(--muted); font-size:13px; margin-top:3px; }
+  .fake-input{
+    margin-top:14px; background:rgba(255,255,255,.07); border:1px solid var(--line); border-radius:10px;
+    padding:10px 12px; font-size:13.5px; color:var(--ink); letter-spacing:1.5px; min-height:20px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .fake-input .caret{ width:2px; height:16px; background:var(--amber); animation:blink 1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .fake-btn{ margin-top:12px; text-align:center; background:var(--gold-grad); color:#241A02; font-weight:700; font-size:14.5px; padding:12px; border-radius:var(--btn-radius); box-shadow:var(--gold-glow); min-height:46px; display:flex; align-items:center; justify-content:center; }
+  .blur-bg{ position:absolute; inset:0; padding:22px; filter:blur(5px) brightness(.75); opacity:.85; }
+  .tile-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .tile{
+    border-radius:14px; padding:12px; background:rgba(255,255,255,.06); border:1px solid var(--line);
+    min-height:118px; display:flex; flex-direction:column; gap:8px;
+  }
+  .tile .thumb{ height:44px; border-radius:9px; }
+  .tile .cap{ font-size:12px; color:var(--muted); font-weight:600; line-height:1.35; }
+  .tile .bar{ height:5px; border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden; margin-top:auto; }
+  .tile .bar i{ display:block; height:100%; width:0; border-radius:99px; }
+  .tile .stat{ font-size:11.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; }
+  .scene-tiles .tile .bar i{ animation:tilefill 2.8s ease forwards; }
+  @keyframes tilefill{ 0%{ width:6%; } 55%{ width:64%; } 100%{ width:100%; } }
+  .saved-row{ display:flex; flex-direction:column; gap:10px; max-width:330px; margin:16px auto 0; }
+  .saved-item{
+    display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.06); border:1px solid var(--line);
+    border-radius:13px; padding:12px 14px; font-size:14.5px; font-weight:600;
+    opacity:0; transform:translateX(-14px);
+  }
+  .scene.on .saved-item{ animation:save-in .5s ease forwards; }
+  .scene.on .saved-item:nth-child(2){ animation-delay:.45s; }
+  .scene.on .saved-item:nth-child(3){ animation-delay:.9s; }
+  @keyframes save-in{ to{ opacity:1; transform:none; } }
+  .tick{ width:24px;height:24px; flex:none; border-radius:50%; background:rgba(62,213,152,.18); display:grid; place-items:center; }
+  .mini-dots{ display:flex; gap:7px; justify-content:center; padding-top:12px; }
+  .mini-dots i{ width:7px;height:7px;border-radius:50%; background:rgba(255,255,255,.22); transition:background .3s, transform .3s; }
+  .mini-dots i.on{ background:var(--amber); transform:scale(1.35); }
+  .mini-cap{ text-align:center; color:var(--faint); font-size:13px; margin-top:10px; }
+
+  /* ---------- marquee ---------- */
+  .marquee{ margin-top:64px; overflow:hidden; padding:15px 0; background:var(--panel-grad-soft); border-radius:18px; box-shadow:var(--panel-shadow);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:0; width:max-content; animation:marq 30s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes marq{ to{ transform:translateX(-50%); } }
+  .marquee span{ font-family:var(--font-d); font-weight:700; font-size:16px; letter-spacing:1.6px; text-transform:uppercase; padding:0 22px; white-space:nowrap; color:var(--muted); }
+  .marquee b{ padding:0 2px; }
+  .c-v{ color:#A78BFF; } .c-c{ color:#5ED6F2; } .c-a{ color:#FFCE54; } .c-p{ color:#FF8FB5; } .c-g{ color:#6FE3B4; }
+
+  /* ---------- section heads ---------- */
+  .kicker{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#FFCE54 !important; }
+  .kicker::before{ content:""; width:26px; height:2px; border-radius:2px; background:linear-gradient(120deg,#F2B544,#DD941F); box-shadow:0 0 10px rgba(245,184,61,.6); }
+  h2{ font-family:var(--font-d); font-weight:800; font-size:clamp(29px,4.4vw,44px); line-height:1.12; letter-spacing:-.3px; margin-top:12px; }
+  h2 .grad{ background:var(--text-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sec-sub{ color:var(--muted); max-width:44em; margin-top:12px; font-size:17.5px; }
+
+  /* ---------- reveal ---------- */
+  .rv{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .rv.in{ opacity:1; transform:none; }
+  .rv.d1{ transition-delay:.08s; } .rv.d2{ transition-delay:.16s; } .rv.d3{ transition-delay:.24s; }
+  .rv.d4{ transition-delay:.32s; } .rv.d5{ transition-delay:.4s; }
+
+  /* ---------- stats ---------- */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:44px; }
+  .stat{
+    background:var(--panel-grad); border:1px solid var(--line); border-radius:var(--radius); padding:24px 22px;
+    position:relative; overflow:hidden; box-shadow:var(--panel-shadow);
+  }
+  .stat::before{ content:""; position:absolute; inset:0 0 auto 0; height:3px; background:var(--ac,var(--violet)); opacity:.9; }
+  .stat .num{ font-family:var(--font-d); font-weight:800; font-size:clamp(30px,3.6vw,42px); line-height:1; }
+  .stat .lbl{ color:var(--muted); font-size:14.5px; margin-top:8px; font-weight:600; }
+
+  /* ---------- features ---------- */
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:42px; }
+  .feat{
+    background:var(--panel-grad); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px; box-shadow:var(--panel-shadow);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+  }
+  .feat:hover{ transform:translateY(-7px); border-color:color-mix(in srgb, var(--ac) 55%, transparent); box-shadow:var(--panel-shadow-lift), 0 24px 50px -18px color-mix(in srgb, var(--ac) 65%, transparent); }
+  .feat .ic{
+    width:52px; height:52px; border-radius:15px; display:grid; place-items:center;
+    background:color-mix(in srgb, var(--ac) 16%, transparent); border:1px solid color-mix(in srgb, var(--ac) 40%, transparent);
+    color:var(--ac);
+  }
+  .feat h3{ font-family:var(--font-d); font-size:20px; margin-top:16px; }
+  .feat p{ color:var(--muted); font-size:15.5px; margin-top:7px; }
+
+  /* ---------- steps ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px; counter-reset:step; }
+  .step{ position:relative; background:var(--panel-grad); border:1px solid var(--line); border-radius:var(--radius); padding:26px 22px; box-shadow:var(--panel-shadow); }
+  .step .n{
+    font-family:var(--font-d); font-weight:800; font-size:15px; width:38px; height:38px; border-radius:50%;
+    display:grid; place-items:center; color:#14102A; background:var(--ac);
+    box-shadow:0 8px 22px -6px var(--ac);
+  }
+  .step h3{ font-family:var(--font-d); font-size:18.5px; margin-top:15px; }
+  .step p{ color:var(--muted); font-size:15px; margin-top:6px; }
+  .step:not(:last-child)::after{
+    content:""; position:absolute; top:44px; right:-13px; width:8px; height:8px; border-radius:50%;
+    background:var(--ac); opacity:.7; z-index:2;
+  }
+
+/* ---- merged styles ---- */
+
+  /* ---------- interactive demo ---------- */
+  .demo-shell{
+    margin-top:42px; border-radius:26px; padding:22px;
+    background:linear-gradient(180deg,#1E1B2E 0%,#14141C 55%,#101019 100%);
+    border:1px solid var(--line); box-shadow:var(--panel-shadow-lift);
+  }
+  .demo-top{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .demo-top .ttl{ font-family:var(--font-d); font-weight:800; font-size:19px; }
+  .credits-chip{
+    margin-left:auto; display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:15px;
+    background:rgba(245,184,61,.13); border:1px solid rgba(245,184,61,.45); color:#FFCE54;
+    padding:8px 15px; border-radius:999px;
+  }
+  .credits-chip b{ font-family:var(--font-d); font-size:18px; color:#fff; min-width:3ch; text-align:right; }
+  .demo-prompts{
+    width:100%; margin-top:16px; background:#0F0F16; border:1px solid var(--line); border-radius:var(--btn-radius);
+    color:var(--ink); font-family:var(--font-b); font-size:15px; line-height:1.55; padding:14px 16px; min-height:96px; resize:vertical;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.4);
+  }
+  .demo-prompts:focus{ outline:2px solid #F5B83D; outline-offset:2px; border-color:rgba(245,184,61,.6); }
+  .demo-actions{ display:flex; gap:12px; align-items:center; margin-top:14px; flex-wrap:wrap; }
+  .btn-gen{
+    position:relative; overflow:hidden; border:none; font-weight:700; font-size:16px; padding:14px 26px; border-radius:var(--btn-radius); min-height:52px;
+    background:var(--gold-grad); color:#241A02;
+    box-shadow:var(--gold-glow); transition:transform .25s, box-shadow .25s, opacity .25s;
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  }
+  .btn-gen::after{
+    content:""; position:absolute; top:0; left:-70%; width:45%; height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg); animation:shine 3.4s ease-in-out infinite;
+  }
+  .btn-gen:hover:not(:disabled){ transform:translateY(-2px); box-shadow:0 16px 38px rgba(245,184,61,.5); }
+  .btn-gen:disabled{ opacity:.55; cursor:wait; }
+  .btn-reset{
+    background:var(--panel-grad); color:var(--gold-text); border:1px solid var(--line); font-weight:700; font-size:15px;
+    padding:14px 22px; border-radius:var(--btn-radius); min-height:52px; box-shadow:var(--panel-shadow); transition:border-color .25s, transform .25s;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .btn-reset:hover{ border-color:rgba(245,184,61,.55); transform:translateY(-2px); }
+  .demo-status{ color:var(--muted); font-size:14.5px; font-weight:600; }
+  .demo-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+  .dtile{ border-radius:16px; padding:16px; background:var(--panel-grad-soft); border:1px solid var(--line); min-height:150px; display:flex; flex-direction:column; gap:9px; transition:border-color .3s; box-shadow:var(--panel-shadow); }
+  .dtile .thumb{ height:52px; border-radius:10px; position:relative; overflow:hidden; }
+  .dtile .thumb::after{ content:""; position:absolute; inset:0; background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%); transform:translateX(-120%); }
+  .dtile.working .thumb::after{ animation:shimmer 1.4s ease-in-out infinite; }
+  @keyframes shimmer{ to{ transform:translateX(120%); } }
+  .dtile .cap{ font-size:13.5px; color:var(--muted); line-height:1.45; }
+  .dtile .bar{ height:6px; border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden; margin-top:auto; }
+  .dtile .bar i{ display:block; height:100%; width:0; border-radius:99px; transition:width .3s ease; }
+  .dtile .stat{ font-size:12px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; display:flex; align-items:center; gap:7px; }
+  .dtile.done{ border-color:rgba(62,213,152,.55); }
+
+  /* ---------- pricing ---------- */
+  .price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px; align-items:stretch; }
+  .price{
+    background:var(--panel-grad); border:1px solid var(--line); border-radius:24px; padding:30px 26px; box-shadow:var(--panel-shadow);
+    display:flex; flex-direction:column; transition:transform .35s, box-shadow .35s;
+  }
+  .price:hover{ transform:translateY(-6px); box-shadow:var(--panel-shadow-lift); }
+  .price.best{
+    background:linear-gradient(170deg, rgba(124,92,255,.20), rgba(255,255,255,.05) 55%, rgba(245,184,61,.14));
+    border:1.5px solid transparent;
+    background-clip:padding-box; position:relative;
+    box-shadow:0 30px 70px -20px rgba(124,92,255,.55);
+  }
+  .price.best::before{
+    content:""; position:absolute; inset:-1.5px; border-radius:24px; padding:1.5px; z-index:-1;
+    background:linear-gradient(140deg,#7C5CFF,#22C3E6,#F5B83D);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude;
+  }
+  .best-tag{
+    align-self:flex-start; font-size:12.5px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase;
+    background:var(--text-grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    border:1px solid rgba(255,255,255,.25); padding:5px 11px; border-radius:999px; margin-bottom:14px;
+  }
+  .price h3{ font-family:var(--font-d); font-size:21px; }
+  .price .amt{ font-family:var(--font-d); font-weight:800; font-size:44px; line-height:1.05; margin-top:12px; }
+  .price .amt small{ font-size:16px; color:var(--muted); font-weight:600; font-family:var(--font-b); }
+  .price .per{ color:var(--muted); font-size:14.5px; margin-top:2px; }
+  .price ul{ margin-top:20px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .price li{ display:flex; gap:10px; font-size:15px; color:var(--muted); }
+  .price li svg{ flex:none; margin-top:3px; }
+  .price .pcta{
+    position:relative; overflow:hidden; margin-top:24px; text-align:center; text-decoration:none; font-weight:700; font-size:15.5px; min-height:52px;
+    display:flex; align-items:center; justify-content:center; border-radius:var(--btn-radius); padding:14px 22px;
+    background:var(--panel-grad); border:1px solid var(--line); color:var(--gold-text); box-shadow:var(--panel-shadow); transition:transform .25s, border-color .25s;
+  }
+  .price .pcta:hover{ transform:translateY(-2px); border-color:rgba(245,184,61,.55); }
+  .price.best .pcta{ background:var(--gold-grad); color:#241A02; border:none; box-shadow:var(--gold-glow); }
+  .price.best .pcta::after{
+    content:""; position:absolute; top:0; left:-70%; width:45%; height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg); animation:shine 3.4s ease-in-out infinite;
+  }
+
+  /* ---------- tutorials ---------- */
+  .tut-list{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:42px; }
+  .tut{
+    display:flex; align-items:center; gap:16px; text-decoration:none;
+    background:var(--panel-grad); border:1px solid var(--line); border-radius:18px; padding:18px 20px; min-height:76px; box-shadow:var(--panel-shadow);
+    transition:transform .3s, border-color .3s, background .3s;
+  }
+  .tut:hover{ transform:translateX(6px); background:var(--glass2); border-color:color-mix(in srgb, var(--ac) 55%, transparent); }
+  .tut .play{
+    width:46px; height:46px; flex:none; border-radius:50%; display:grid; place-items:center; color:#14102A;
+    background:var(--ac); box-shadow:0 8px 20px -6px var(--ac);
+  }
+  .tut .tt{ font-family:var(--font-d); font-weight:700; font-size:17px; }
+  .tut .td{ color:var(--muted); font-size:14px; }
+  .tut .arr{ margin-left:auto; color:var(--faint); flex:none; transition:transform .3s, color .3s; }
+  .tut:hover .arr{ transform:translateX(4px); color:#fff; }
+
+  /* ---------- faq ---------- */
+  .faq-list{ margin-top:38px; display:flex; flex-direction:column; gap:12px; max-width:820px; }
+  .faq{ background:var(--panel-grad); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--panel-shadow); }
+  .faq button{
+    width:100%; background:none; border:none; color:var(--ink); text-align:left;
+    font-family:var(--font-d); font-weight:700; font-size:17px; padding:18px 20px; min-height:56px;
+    display:flex; align-items:center; gap:12px; transition:background .25s;
+  }
+  .faq button:hover{ background:rgba(245,184,61,.06); }
+  .faq button .fx{ margin-left:auto; flex:none; width:28px; height:28px; border-radius:50%; background:var(--glass2); display:grid; place-items:center; transition:transform .35s; }
+  .faq.open button .fx{ transform:rotate(45deg); }
+  .faq .ans{ max-height:0; overflow:hidden; transition:max-height .45s ease; }
+  .faq .ans p{ padding:0 20px 19px; color:var(--muted); font-size:15.5px; }
+
+  /* ---------- download ---------- */
+  .dl-panel{
+    margin-top:8px; border-radius:30px; padding:52px 34px; text-align:center; position:relative; overflow:hidden;
+    background:linear-gradient(135deg, rgba(124,92,255,.35), rgba(34,195,230,.22) 48%, rgba(245,184,61,.30));
+    border:1px solid var(--line); box-shadow:0 40px 100px rgba(0,0,0,.5);
+  }
+  .dl-panel::before{ content:""; position:absolute; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,#FF6B9D,transparent 65%); opacity:.28; filter:blur(60px); top:-200px; right:-120px; }
+  .dl-panel h2{ position:relative; }
+  .dl-panel .ver{ position:relative; display:inline-block; margin-top:14px; font-weight:700; color:#fff; background:rgba(10,8,26,.45); border:1px solid var(--line); padding:8px 16px; border-radius:999px; font-size:14.5px; }
+  .dl-panel .cta-row{ position:relative; margin-top:28px; display:flex; justify-content:center; }
+  .dl-panel .sys{ position:relative; color:rgba(255,255,255,.85); font-size:14.5px; margin-top:18px; font-weight:600; }
+  .dl-count-note{ position:relative; margin-top:10px; color:rgba(255,255,255,.65); font-size:13.5px; }
+
+  /* ---------- footer ---------- */
+  footer{ margin-top:100px; background:linear-gradient(180deg,#12121A 0%,#0B0B10 100%); box-shadow:0 -18px 44px rgba(0,0,0,.35); backdrop-filter:blur(10px); }
+  .foot-in{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:30px 0 36px; }
+  .foot-in .made{ color:var(--muted); font-size:15px; }
+  .wa-link{
+    margin-left:auto; display:inline-flex; align-items:center; justify-content:center; gap:9px; text-decoration:none; font-weight:700; font-size:15px;
+    color:#0E2A1D; background:linear-gradient(120deg,#5BE584,#25D366); padding:14px 22px; border-radius:var(--btn-radius); min-height:52px;
+    box-shadow:0 10px 26px rgba(37,211,102,.35); transition:transform .25s, box-shadow .25s;
+  }
+  .wa-link:hover{ transform:translateY(-2px); }
+  .copy{ width:100%; color:var(--faint); font-size:13.5px; padding-top:16px; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; }
+
+  .wa-float{
+    position:fixed; right:18px; bottom:18px; z-index:70; width:56px; height:56px; border-radius:50%;
+    background:linear-gradient(135deg,#5BE584,#25D366); display:grid; place-items:center;
+    box-shadow:0 14px 34px rgba(37,211,102,.45); transition:transform .25s;
+  }
+  .wa-float:hover{ transform:scale(1.08); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1020px){
+    .nav-links{ order:3; margin-left:0; width:100%; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .nav-links::-webkit-scrollbar{ display:none; }
+    .nav-cta{ margin-left:auto; }
+    .hero-grid{ grid-template-columns:1fr; gap:40px; }
+    .feat-grid{ grid-template-columns:1fr 1fr; }
+    .steps{ grid-template-columns:1fr 1fr; }
+    .step:not(:last-child)::after{ display:none; }
+    .stats{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:680px){
+    body{ font-size:16px; }
+    section{ padding:64px 0 4px; }
+    .nav-links{ order:3; margin-left:0; width:100%; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; }
+    .nav-links::-webkit-scrollbar{ display:none; }
+    .nav-links a{ padding:9px 13px; font-size:14px; }
+    .nav-cta{ margin-left:auto; padding:11px 16px; font-size:14px; min-height:46px; }
+    .feat-grid,.price-grid,.demo-tiles{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .stats{ grid-template-columns:1fr 1fr; gap:12px; }
+    .mini-stage{ height:330px; }
+    .tile-grid{ grid-template-columns:1fr 1fr; }
+    .tile-grid .tile:last-child{ display:none; }
+    .dl-panel{ padding:40px 20px; }
+    .hero{ padding-top:40px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .blob,.marquee-track,.btn-gold::after,.nav-cta::after,.btn-gen::after,.price.best .pcta::after,.splash-logo,.pill .dot,.fake-input .caret,
+    .scene-tiles .tile .bar i,.dtile.working .thumb::after{ animation:none !important; }
+    .rv{ opacity:1; transform:none; transition:none; }
+    .scene{ transition:none; }
+    .faq .ans{ transition:none; }
+    .tab-indicator{ transition:none !important; }
+    .btn-gold,.btn-ghost,.nav-cta,.price .pcta,.wa-link,.btn-gen,.btn-reset,.feat{ transition:none !important; }
+  }
+
+/* ---- merged styles ---- */
+
+        .scale-strip{ margin-top:44px; background:var(--panel-grad); border:1px solid var(--line); border-radius:20px; padding:26px 24px; box-shadow:var(--panel-shadow); }
+        .scale-strip h3{ font-family:var(--font-d); font-size:22px; }
+        .scale-strip .scale-sub{ color:var(--muted); font-size:15px; margin-top:6px; max-width:46em; }
+        .scale-row{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:14px; align-items:stretch; margin-top:20px; }
+        .scale-cell{ background:var(--panel-grad-soft); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center; }
+        .scale-cell .sc-acct{ font-family:var(--font-d); font-weight:800; font-size:19px; color:#fff; }
+        .scale-cell .sc-cred{ font-family:var(--font-d); font-weight:800; font-size:26px; margin-top:6px; }
+        .scale-cell .sc-vid{ color:var(--muted); font-size:13.5px; margin-top:4px; font-weight:600; }
+        .scale-arrow{ align-self:center; color:var(--faint); font-family:var(--font-d); font-weight:800; font-size:20px; }
+        .scale-note{ color:var(--faint); font-size:13px; margin-top:14px; }
+        @media (max-width:680px){ .scale-row{ grid-template-columns:1fr; } .scale-arrow{ transform:rotate(90deg); justify-self:center; } }
+      
+/* ---- merged styles ---- */
+
+    .shots-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:42px; }
+    .shot-card{ background:var(--panel-grad); border:1px solid var(--line); border-radius:22px; padding:16px; box-shadow:var(--panel-shadow); transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+    .shot-card:hover{ transform:translateY(-6px); box-shadow:var(--panel-shadow-lift); }
+    .shot-win{ border-radius:14px; overflow:hidden; background:#0F0F16; border:1px solid #26262F; }
+    .shot-bar{ display:flex; align-items:center; gap:6px; padding:9px 12px; background:#1B1B24; border-bottom:1px solid var(--line); }
+    .shot-bar i{ width:9px; height:9px; border-radius:50%; display:block; }
+    .shot-bar .t{ margin-left:7px; font-size:12px; font-weight:600; color:var(--faint); letter-spacing:.3px; }
+    .shot-body{ padding:16px; min-height:248px; position:relative; }
+    .shot-cap{ padding:14px 4px 2px; }
+    .shot-cap .ct{ font-family:var(--font-d); font-weight:700; font-size:17.5px; }
+    .shot-cap .cd{ color:var(--muted); font-size:14.5px; margin-top:3px; }
+    /* mock 1 — portal */
+    .mock-blur{ position:absolute; inset:0; padding:16px; filter:blur(4px) brightness(.6); opacity:.8; display:grid; grid-template-columns:1fr 1fr; gap:10px; align-content:start; }
+    .mock-blur div{ height:52px; border-radius:10px; }
+    .portal-mock{ position:relative; max-width:262px; margin:6px auto 0; background:rgba(20,20,28,.94); border:1px solid rgba(245,184,61,.35); border-radius:16px; padding:18px; box-shadow:0 22px 46px rgba(0,0,0,.55); text-align:center; }
+    .portal-mock h4{ font-family:var(--font-d); font-size:16.5px; }
+    .portal-mock .ps{ color:var(--muted); font-size:12.5px; margin-top:2px; }
+    .g-btn{ margin-top:13px; background:#fff; color:#1F1F1F; font-weight:600; font-size:13.5px; border-radius:10px; padding:10px; display:flex; align-items:center; justify-content:center; gap:8px; min-height:40px; }
+    .mock-field{ margin-top:9px; text-align:left; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:10px; padding:9px 11px; font-size:12.5px; color:var(--muted); }
+    .mock-field.gold{ border-color:rgba(245,184,61,.6); color:#FFCE54; letter-spacing:1.2px; font-weight:700; }
+    .mock-activate{ margin-top:11px; background:var(--gold-grad); color:#241A02; font-weight:700; font-size:13.5px; border-radius:10px; padding:11px; min-height:42px; display:flex; align-items:center; justify-content:center; box-shadow:var(--gold-glow); }
+    /* mock 2 — studio */
+    .studio-mock{ display:grid; grid-template-columns:104px 1fr; gap:12px; }
+    .acct{ background:var(--panel-grad-soft); border:1px solid var(--line); border-radius:10px; padding:9px 10px; margin-bottom:8px; }
+    .acct .an{ font-size:12px; font-weight:700; }
+    .chip{ display:inline-block; margin-top:4px; font-size:10.5px; font-weight:700; color:#FFCE54; background:rgba(245,184,61,.13); border:1px solid rgba(245,184,61,.4); padding:2px 8px; border-radius:999px; }
+    .chip.low{ color:#FF8FB5; background:rgba(255,107,157,.12); border-color:rgba(255,107,157,.4); }
+    .prompt-mock{ background:#0B0B10; border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:12px; color:var(--muted); line-height:1.55; min-height:62px; }
+    .gen-mock{ margin-top:10px; background:var(--gold-grad); color:#241A02; font-weight:700; font-size:13px; border-radius:10px; padding:10px; text-align:center; min-height:40px; display:flex; align-items:center; justify-content:center; box-shadow:var(--gold-glow); }
+    .mini-tiles{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+    .mini-tile{ border:1px solid var(--line); border-radius:10px; padding:8px; background:var(--panel-grad-soft); }
+    .mini-tile .th{ height:26px; border-radius:6px; }
+    .mini-tile .sv{ display:flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:#3ED598; margin-top:6px; }
+    /* mock 3 — downloads */
+    .dl-row{ display:flex; align-items:center; gap:11px; background:var(--panel-grad-soft); border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:10px; }
+    .dl-row .fn{ font-size:13.5px; font-weight:700; }
+    .dl-row .fs{ font-size:11.5px; color:var(--faint); }
+    .dl-start{ margin-left:auto; flex:none; font-size:12.5px; font-weight:700; color:#241A02; background:var(--gold-grad); border-radius:9px; padding:8px 14px; min-height:36px; display:inline-flex; align-items:center; }
+    .dl-saved{ margin-left:auto; flex:none; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:#3ED598; }
+    .dl-bar{ height:5px; border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden; margin-top:7px; }
+    .dl-bar i{ display:block; height:100%; border-radius:99px; background:linear-gradient(90deg,#F2B544,#22C3E6); }
+    /* mock 4 — agent */
+    .chat-mock{ background:var(--panel-grad-soft); border:1px solid var(--line); border-radius:12px; padding:11px 13px; font-size:13px; color:var(--muted); max-width:88%; }
+    .proposal-mock{ margin-top:12px; background:linear-gradient(170deg, rgba(124,92,255,.16), rgba(255,255,255,.03)); border:1px solid rgba(245,184,61,.45); border-radius:14px; padding:15px; }
+    .proposal-mock .pt{ font-family:var(--font-d); font-weight:700; font-size:14.5px; }
+    .proposal-mock .pc{ margin-top:7px; font-size:13.5px; color:var(--muted); }
+    .proposal-mock .pc b{ color:#FFCE54; }
+    .prop-btns{ display:flex; gap:9px; margin-top:13px; }
+    .prop-approve{ flex:1; background:var(--gold-grad); color:#241A02; font-weight:700; font-size:13px; text-align:center; padding:10px; border-radius:10px; min-height:40px; display:flex; align-items:center; justify-content:center; }
+    .prop-reject{ flex:1; background:transparent; color:var(--muted); border:1px solid var(--line); font-weight:700; font-size:13px; text-align:center; padding:10px; border-radius:10px; min-height:40px; display:flex; align-items:center; justify-content:center; }
+    .guard-note{ display:flex; align-items:center; gap:6px; margin-top:11px; font-size:12px; font-weight:600; color:#3ED598; }
+    @media (max-width:820px){ .shots-grid{ grid-template-columns:1fr; } .shot-body{ min-height:0; } }
+  
+/* ---- merged styles ---- */
+
+  /* ===== Reference design, dark Midnight Gold conversion =====
+     Warm ivory grid-paper site -> deep #0B0B10 + faint grid, rust -> app gold,
+     plain-text nav, two pill button shapes only, serif-italic gold accents. */
+  :root{ --font-s:"Lora", Georgia, serif; --btn-radius:999px; }
+  body{
+    background-color:#0B0B10;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:54px 54px;
+  }
+  .aurora{ display:none !important; }
+  .grain{ opacity:.18; }
+  #progressBar{ background:#F5B83D; box-shadow:none; height:2px; }
+  ::selection{ background:#F5B83D; color:#241A02; }
+
+  /* nav — plain text links, hairline, one gold pill */
+  header.nav{ background:rgba(11,11,16,.9); border-bottom:1px solid rgba(255,255,255,.09); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+  .nav-in{ position:relative; }
+  .brand .grad{ font-family:var(--font-s); font-style:italic; font-weight:600; background:none; -webkit-background-clip:initial; background-clip:initial; color:#F5B83D; -webkit-text-fill-color:#F5B83D; }
+  .nav-links{
+    background:transparent; border:none; box-shadow:none; border-radius:0; padding:0; gap:26px;
+    margin-left:auto; overflow:visible;
+  }
+  .nav-links a{ padding:8px 2px; border-radius:0; min-height:40px; font-size:15px; font-weight:500; color:#C9C4B4; }
+  .nav-links a:hover{ color:#fff; }
+  .nav-links a.active{ color:#FFCE54; font-weight:600; box-shadow:inset 0 -2px 0 #F5B83D; }
+  .nav-cta{ border-radius:999px; padding:11px 22px; min-height:46px; box-shadow:0 8px 22px rgba(245,184,61,.28); }
+  .menu-btn{
+    display:none; margin-left:10px; width:46px; height:46px; border-radius:999px; flex:none;
+    background:#14141C; border:1px solid rgba(255,255,255,.16); color:#F7F3E8;
+    align-items:center; justify-content:center;
+  }
+
+  /* buttons — only two shapes: solid gold pill / dark hairline pill */
+  .btn-gold,.btn-gen,.price.best .pcta,.mock-activate,.gen-mock{ border-radius:999px !important; }
+  .btn-ghost,.btn-reset,.price .pcta,.tut,.faq button .fx{ border-radius:999px; }
+  .btn-ghost,.btn-reset,.price .pcta{
+    background:#14141C; border:1px solid rgba(255,255,255,.18); color:#F7F3E8; box-shadow:none;
+  }
+  .price.best .pcta{ background:var(--gold-grad); color:#241A02; border:none; }
+  .btn-ghost:hover,.btn-reset:hover,.price .pcta:hover{ border-color:rgba(245,184,61,.6); color:#FFCE54; box-shadow:none; }
+  .btn-gold::after,.nav-cta::after,.btn-gen::after,.price.best .pcta::after{ display:none; }
+  .wa-link{ border-radius:999px; }
+  .dl-start,.prop-approve,.prop-reject{ border-radius:999px !important; }
+
+  /* hero — badge, serif/sans two-line headline, stat row */
+  .pill{ background:#14141C; border:1px solid rgba(255,255,255,.12); box-shadow:none; border-radius:999px; padding:5px 14px 5px 5px; gap:10px; }
+  .pill-chip{ font-family:var(--font-d); font-size:11px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#241A02; background:var(--gold-grad); padding:5px 10px; border-radius:999px; }
+  h1{ letter-spacing:-1px; }
+  h1 .h-serif{ display:block; font-family:var(--font-s); font-style:italic; font-weight:600; color:#F5B83D; letter-spacing:-.5px; }
+  h1 .h-sans{ display:block; color:#F7F3E8; }
+  h1 .grad{ background:none; color:#F5B83D; -webkit-text-fill-color:#F5B83D; }
+  .hero-stats{ display:flex; gap:44px; flex-wrap:wrap; margin-top:34px; }
+  .hs-num{ font-family:var(--font-s); font-weight:600; font-size:31px; line-height:1.1; color:#F7F3E8; }
+  .hs-cap{ color:var(--faint); font-size:13.5px; margin-top:3px; }
+
+  /* hero right — calm app window + floating stat card */
+  .hero-grid > div:last-child{ position:relative; }
+  .mini-shell{ background:#101016; border:1px solid rgba(255,255,255,.1); border-radius:20px; box-shadow:0 30px 60px rgba(0,0,0,.5); }
+  .float-card{
+    position:absolute; left:-16px; bottom:34px; z-index:3;
+    background:#17171F; border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:16px 22px; box-shadow:0 22px 44px rgba(0,0,0,.5);
+  }
+  .fc-lbl{ color:var(--faint); font-size:13px; font-weight:600; }
+  .fc-num{ font-family:var(--font-s); font-weight:600; font-size:34px; line-height:1.15; color:#F7F3E8; }
+
+  /* section titles — serif italic gold accent instead of rainbow gradient text */
+  h2 .grad,.best-tag{ font-family:var(--font-s); font-style:italic; font-weight:600; background:none; -webkit-background-clip:initial; background-clip:initial; color:#FFCE54; -webkit-text-fill-color:#FFCE54; }
+  .kicker{ letter-spacing:2px; }
+  .kicker::before{ box-shadow:none; }
+
+  /* calmer surfaces — hairlines over heavy panels */
+  .feat,.step,.stat,.req-card,.legal-card,.change,.shot-card,.faq,.scale-strip,.demo-shell,.price{
+    background:#111118; box-shadow:none; border-color:rgba(255,255,255,.09);
+  }
+  .feat:hover,.price:hover,.shot-card:hover{ box-shadow:0 18px 38px rgba(0,0,0,.4); }
+  .scale-cell,.dtile,.models-table,.marquee{ background:#111118; box-shadow:none; border:1px solid rgba(255,255,255,.09); }
+  .marquee{ border-radius:14px; }
+  .stat .num{ font-family:var(--font-s); font-weight:600; }
+  .price.best{ background:#15151D; border:1px solid rgba(245,184,61,.55); box-shadow:0 26px 54px rgba(0,0,0,.5); }
+  .price.best::before{ display:none; }
+  .dl-panel{ background:#13131B; border:1px solid rgba(245,184,61,.35); box-shadow:0 30px 60px rgba(0,0,0,.45); }
+  .dl-panel::before{ display:none; }
+  .dl-panel .ver{ background:#0B0B10; border-color:rgba(255,255,255,.14); }
+  footer{ background:#0B0B10; box-shadow:none; border-top:1px solid rgba(255,255,255,.09); }
+
+  @media (max-width:1020px){
+    .menu-btn{ display:inline-flex; }
+    .nav-cta{ margin-left:auto; }
+    .nav-links{
+      display:none; position:absolute; top:calc(100% + 8px); left:0; right:0; z-index:65;
+      flex-direction:column; align-items:stretch; gap:2px;
+      background:#13131B; border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:10px;
+      box-shadow:0 24px 48px rgba(0,0,0,.5);
+    }
+    .nav-links.open{ display:flex; }
+    .nav-links a{ padding:11px 12px; min-height:44px; border-radius:10px; }
+    .nav-links a.active{ box-shadow:none; background:rgba(245,184,61,.1); }
+    .float-card{ left:8px; bottom:26px; padding:13px 18px; }
+    .fc-num{ font-size:28px; }
+  }
+  @media (max-width:680px){
+    .hero-stats{ gap:26px; }
+    .hs-num{ font-size:26px; }
+    .float-card{ position:static; margin-top:14px; display:inline-block; }
+  }
+
+/* ---- merged styles ---- */
+
+  /* ===== Theme toggle + light theme (reference look, gold accent) ===== */
+  *{ transition-property:background-color, border-color, color; transition-duration:.35s; transition-timing-function:ease; }
+  html{ color-scheme:dark; }
+  html[data-theme="light"]{ color-scheme:light; }
+
+  .theme-toggle{
+    flex:none; display:inline-flex; align-items:center; justify-content:center;
+    width:46px; height:46px; min-height:46px; padding:0; border-radius:999px;
+    background:#14141C; border:1px solid rgba(255,255,255,.16); color:#FFCE54;
+  }
+  .theme-toggle:hover{ border-color:rgba(245,184,61,.65); }
+  .theme-toggle .ic-moon{ display:none; }
+  html[data-theme="light"] .theme-toggle{ background:#FFFFFF; border-color:#E0D5BC; color:#8A5F0A; }
+  html[data-theme="light"] .theme-toggle .ic-sun{ display:none; }
+  html[data-theme="light"] .theme-toggle .ic-moon{ display:block; }
+
+  /* ----- light palette: warm ivory, ink text, white panels, gold accent ----- */
+  html[data-theme="light"]{
+    --bg:#FAF6EF; --bg2:#F4EEE1; --bg3:#FFFFFF; --panel:#FFFFFF;
+    --ink:#1C1917; --muted:#55504A; --faint:#6F675C;
+    --glass:#FFFFFF; --glass2:#F5EFE3; --line:#E8E0D0;
+    --panel-grad:linear-gradient(180deg,#FFFFFF 0%,#FDFBF5 100%);
+    --panel-grad-soft:linear-gradient(180deg,#FFFFFF 0%,#FAF6EF 100%);
+    --panel-shadow:0 14px 34px rgba(122,94,32,.10), 0 2px 10px rgba(122,94,32,.05);
+    --panel-shadow-lift:0 22px 48px rgba(122,94,32,.16), 0 4px 14px rgba(122,94,32,.07);
+    --gold-text:#8A5F0A;
+  }
+  html[data-theme="light"] body{
+    background-color:#FAF6EF;
+    background-image:
+      linear-gradient(rgba(28,25,23,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28,25,23,.05) 1px, transparent 1px);
+  }
+  html[data-theme="light"] .grain{ background-image:radial-gradient(rgba(28,25,23,.05) 1px, transparent 1px); }
+  html[data-theme="light"] header.nav{ background:rgba(250,246,239,.92); border-bottom:1px solid #E8E0D0; }
+  html[data-theme="light"] .nav-links a{ color:#55504A; }
+  html[data-theme="light"] .nav-links a:hover{ color:#1C1917; }
+  html[data-theme="light"] .nav-links a.active{ color:#8A5F0A; box-shadow:inset 0 -2px 0 #D99A16; }
+  html[data-theme="light"] .menu-btn{ background:#FFFFFF; border-color:#E0D5BC; color:#1C1917; }
+  html[data-theme="light"] .brand .grad{ color:#B57E0E; -webkit-text-fill-color:#B57E0E; }
+
+  html[data-theme="light"] .pill{ background:#FFFFFF; border-color:#E8E0D0; }
+  html[data-theme="light"] h1 .h-sans{ color:#1C1917; }
+  html[data-theme="light"] h1 .h-serif, html[data-theme="light"] h1 .grad{ color:#B57E0E; -webkit-text-fill-color:#B57E0E; }
+  html[data-theme="light"] h2 .grad, html[data-theme="light"] .best-tag{ color:#B57E0E; -webkit-text-fill-color:#B57E0E; }
+  html[data-theme="light"] .kicker{ color:#8A5F0A !important; }
+  html[data-theme="light"] .hs-num{ color:#1C1917; }
+
+  /* white surfaces with warm shadows + hairlines */
+  html[data-theme="light"] .feat, html[data-theme="light"] .step, html[data-theme="light"] .stat,
+  html[data-theme="light"] .req-card, html[data-theme="light"] .legal-card, html[data-theme="light"] .change,
+  html[data-theme="light"] .shot-card, html[data-theme="light"] .faq, html[data-theme="light"] .scale-strip,
+  html[data-theme="light"] .price{
+    background:#FFFFFF; border-color:#E8E0D0; box-shadow:var(--panel-shadow);
+  }
+  html[data-theme="light"] .feat:hover, html[data-theme="light"] .price:hover, html[data-theme="light"] .shot-card:hover{ box-shadow:var(--panel-shadow-lift); }
+  html[data-theme="light"] .scale-cell, html[data-theme="light"] .marquee{ background:#FFFFFF; border-color:#E8E0D0; box-shadow:var(--panel-shadow); }
+  html[data-theme="light"] .scale-cell .sc-acct{ color:#1C1917; }
+  html[data-theme="light"] .scale-cell .sc-cred{ color:#8A5F0A !important; }
+  html[data-theme="light"] .change .ver-badge{ color:#8A5F0A; }
+  html[data-theme="light"] .st-wait{ color:#8A5F0A; }
+  html[data-theme="light"] .models-table{ background:#FFFFFF; border-color:#E8E0D0; box-shadow:var(--panel-shadow); }
+  html[data-theme="light"] .models-table th{ background:#F7F0DD; color:#8A5F0A; border-bottom-color:#E8E0D0; }
+  html[data-theme="light"] .models-table td{ border-bottom-color:#E8E0D0; }
+  html[data-theme="light"] .activity-table th, html[data-theme="light"] .activity-table td{ border-bottom-color:#E8E0D0; }
+  html[data-theme="light"] .faq button:hover{ background:rgba(184,134,11,.07); }
+
+  /* outline pills: white bg + dark border + dark text */
+  html[data-theme="light"] .btn-ghost, html[data-theme="light"] .price .pcta{
+    background:#FFFFFF; border:1px solid #1C1917; color:#1C1917; box-shadow:none;
+  }
+  html[data-theme="light"] .btn-ghost:hover, html[data-theme="light"] .price .pcta:hover{ border-color:#B57E0E; color:#8A5F0A; box-shadow:none; }
+  html[data-theme="light"] .price.best{ background:#FFFDF6; border-color:rgba(184,134,11,.55); box-shadow:var(--panel-shadow-lift); }
+  html[data-theme="light"] .price.best .pcta{ background:var(--gold-grad); color:#241A02; border:none; }
+  html[data-theme="light"] #pricing .wrap > p[style]{ color:#8A5F0A !important; }
+
+  /* floating stat card: white with ink numbers */
+  html[data-theme="light"] .float-card{ background:#FFFFFF; border-color:#E8E0D0; box-shadow:0 22px 44px rgba(122,94,32,.18); }
+  html[data-theme="light"] .fc-num{ color:#1C1917; }
+
+  /* download panel + footer */
+  html[data-theme="light"] .dl-panel{ background:linear-gradient(180deg,#FFFDF6 0%,#FBF2DC 100%); border-color:rgba(184,134,11,.45); box-shadow:0 30px 60px rgba(122,94,32,.18); }
+  html[data-theme="light"] .dl-panel .ver{ background:#FFFFFF; border-color:#E0D5BC; color:#1C1917; }
+  html[data-theme="light"] .dl-panel .sys{ color:#55504A; }
+  html[data-theme="light"] footer{ background:#F7F1E5; border-top:1px solid #E8E0D0; }
+
+  /* app-window frames stay DARK in both themes — they picture the app itself */
+  html[data-theme="light"] .mini-shell, html[data-theme="light"] .demo-shell, html[data-theme="light"] .shot-win{
+    --ink:#F7F3E8; --muted:#C9C4B4; --faint:#97917F;
+    --glass:#14141C; --glass2:#1B1B24; --line:#26262F;
+    --panel-grad:linear-gradient(180deg,#1C1C26 0%,#14141C 100%);
+    --panel-grad-soft:linear-gradient(180deg,#191922 0%,#12121A 100%);
+    --panel-shadow:0 14px 34px rgba(0,0,0,.38), 0 2px 10px rgba(0,0,0,.28);
+    --panel-shadow-lift:0 22px 48px rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.3);
+    --gold-text:#FFCE54;
+    color:#F7F3E8;
+  }
+  html[data-theme="light"] .mini-shell{ box-shadow:0 30px 60px rgba(122,94,32,.25); }
+
+  @media (max-width:1020px){
+    html[data-theme="light"] .nav-links{ background:#FFFFFF; border-color:#E8E0D0; box-shadow:0 24px 48px rgba(122,94,32,.18); }
+    html[data-theme="light"] .nav-links a.active{ background:rgba(245,184,61,.16); }
+  }
+
+]]></b:skin>
+</head>
+<body>
+<div id="progressBar" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true">
+  <div class="blob b1" data-parallax="30"></div>
+  <div class="blob b2" data-parallax="-45"></div>
+  <div class="blob b3" data-parallax="55"></div>
+  <div class="blob b4" data-parallax="-30"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="FlowStudio home">
+      <svg class="logo-mark" width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><rect x="2" y="2" width="44" height="44" rx="12" fill="none" stroke="rgba(245,184,61,.35)"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+      <span>Flow<span class="grad">Studio</span></span>
+    </a>
+    <nav class="nav-links" id="tabTrack" aria-label="Main sections">
+      <a href="#top" data-nav="home" class="active">Home</a>
+      <a href="#features" data-nav="features">Features</a>
+      <a href="#how" data-nav="features">How it works</a>
+      <a href="#tutorials" data-nav="tutorials">Tutorials</a>
+      <a href="#pricing" data-nav="pricing">Pricing</a>
+      <a href="#whatsnew" data-nav="whatsnew">What's New</a>
+      <a href="#faq" data-nav="faq">FAQ</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+      <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19"/></svg>
+      <svg class="ic-moon" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a.6.6 0 0 0-.8-.8 10.2 10.2 0 1 0 12.4 12.4.6.6 0 0 0-.8-.8z"/></svg>
+    </button>
+    <a class="nav-cta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">Download Free</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tabTrack">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill rv in"><span class="pill-chip">FlowStudio</span> Multi-account AI video studio for Windows</span>
+        <h1 class="rv in d1"><span class="h-serif">Prompts in.</span><span class="h-sans">Videos out.</span></h1>
+        <p class="hero-sub rv in d2">Paste your prompts and download finished videos. FlowStudio runs your Google Flow accounts like a team — add as many accounts as you like, there is no cap, and every account adds its own daily free credits. It rotates accounts, generates in parallel, watches the credits and saves every video straight to your Downloads folder.</p>
+        <div class="hero-cta rv in d3">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+          <a class="btn-ghost" href="#features">
+            See what you get
+          </a>
+        </div>
+        <div class="hero-stats rv in d4">
+          <div class="hs"><div class="hs-num">10 min</div><div class="hs-cap">to set up</div></div>
+          <div class="hs"><div class="hs-num">Win</div><div class="hs-cap">Windows 10 / 11</div></div>
+          <div class="hs"><div class="hs-num">Free</div><div class="hs-cap">7-day trial, no card</div></div>
+        </div>
+      </div>
+
+      <div class="rv in d2">
+        <div style="margin-bottom:12px;"><span class="live-tag"><i></i> Live sample — try it · Entry flow</span></div>
+        <div class="mini-shell" aria-label="Animated preview of the FlowStudio entry flow">
+          <div class="mini-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — live preview</span></div>
+          <div class="mini-stage" id="miniStage">
+            <!-- scene 1: splash -->
+            <div class="scene scene-splash on" data-scene="0">
+              <svg class="splash-logo" width="74" height="74" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+              <div class="nm">FlowStudio</div>
+              <div class="loadbar"><i></i></div>
+              <div class="st" id="splashStatus">Engine starting…</div>
+            </div>
+            <!-- scene 2: portal over blurred studio -->
+            <div class="scene" data-scene="1">
+              <div class="blur-bg" aria-hidden="true">
+                <div class="tile-grid">
+                  <div class="tile"><div class="thumb" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><div class="cap">Scene 01</div></div>
+                  <div class="tile"><div class="thumb" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><div class="cap">Scene 02</div></div>
+                  <div class="tile"><div class="thumb" style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div><div class="cap">Scene 03</div></div>
+                </div>
+              </div>
+              <div class="portal-card">
+                <h4>Welcome back</h4>
+                <p class="sub">Activate with the key from your email</p>
+                <div class="fake-input"><span id="keyType">FS-••••-••••-••••</span><span class="caret"></span></div>
+                <div class="fake-btn">Activate FlowStudio</div>
+              </div>
+            </div>
+            <!-- scene 3: generating tiles -->
+            <div class="scene scene-tiles" data-scene="2">
+              <div class="tile-grid">
+                <div class="tile"><div class="thumb" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><div class="cap">A boy polishes shoes at the station…</div><div class="bar"><i style="background:linear-gradient(90deg,#7C5CFF,#22C3E6)"></i></div><span class="stat" style="color:#5ED6F2">Generating</span></div>
+                <div class="tile"><div class="thumb" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><div class="cap">The old teacher opens a worn diary…</div><div class="bar"><i style="background:linear-gradient(90deg,#FF6B9D,#F5B83D); animation-delay:.5s"></i></div><span class="stat" style="color:#FFCE54">Generating</span></div>
+                <div class="tile"><div class="thumb" style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div><div class="cap">Rain over the village school roof…</div><div class="bar"><i style="background:linear-gradient(90deg,#22C3E6,#3ED598); animation-delay:1s"></i></div><span class="stat" style="color:#6FE3B4">Generating</span></div>
+              </div>
+              <p style="text-align:center; color:var(--muted); font-size:13.5px; margin-top:16px;">3 accounts working in parallel · 21 credits planned</p>
+            </div>
+            <!-- scene 4: saved -->
+            <div class="scene" data-scene="3">
+              <p style="text-align:center; font-family:var(--font-d); font-weight:800; font-size:19px;">Straight into Downloads</p>
+              <div class="saved-row">
+                <div class="saved-item"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> scene-01.mp4 · Saved</div>
+                <div class="saved-item"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> scene-02.mp4 · Saved</div>
+                <div class="saved-item"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> scene-03.mp4 · Saved</div>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dots" id="miniDots"><i class="on"></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="float-card" aria-hidden="true"><div class="fc-lbl">Videos created</div><div class="fc-num">12,400+</div></div>
+        <p class="mini-cap">The real entry flow, in miniature: splash → key portal → parallel generation → saved videos.</p>
+      </div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <span>Unlimited accounts <b class="c-v">✦</b></span><span>Batch generation <b class="c-c">✦</b></span><span>Agent Mode <b class="c-a">✦</b></span><span>Auto-download <b class="c-p">✦</b></span><span>Credit planner <b class="c-g">✦</b></span><span>Parked-download recovery <b class="c-v">✦</b></span><span>Parallel accounts <b class="c-c">✦</b></span><span>One-click saves <b class="c-a">✦</b></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= STATS ================= -->
+  <section style="padding-top:56px;">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat rv" style="--ac:#7C5CFF"><div class="num" style="font-size:clamp(25px,3.1vw,36px); padding-top:4px;">Unlimited</div><div class="lbl">accounts — no cap; credits scale with every account you add</div></div>
+        <div class="stat rv d1" style="--ac:#22C3E6"><div class="num"><span data-count="7">0</span></div><div class="lbl">credits per video, planned before you spend</div></div>
+        <div class="stat rv d2" style="--ac:#F5B83D"><div class="num"><span data-count="24" data-suffix="/7">0</span></div><div class="lbl">autopilot — batches keep moving on their own</div></div>
+        <div class="stat rv d3" style="--ac:#FF6B9D"><div class="num"><span data-count="1">0</span></div><div class="lbl">click downloads — finished videos save themselves</div></div>
+      </div>
+    </div>
+  </section>
+  <!-- ================= DEMO STATS BAND ================= -->
+  <section style="padding-top:28px; padding-bottom:8px;" aria-label="FlowStudio in numbers">
+    <div class="wrap">
+      <div class="stats" style="margin-top:0;">
+        <div class="stat rv" style="--ac:#F5B83D"><div class="num"><span data-count="950" data-suffix="+">0</span></div><div class="lbl">Downloads</div></div>
+        <div class="stat rv d1" style="--ac:#7C5CFF"><div class="num"><span data-count="480" data-suffix="+">0</span></div><div class="lbl">Creators using FlowStudio</div></div>
+        <div class="stat rv d2" style="--ac:#22C3E6"><div class="num"><span data-count="12400" data-suffix="+">0</span></div><div class="lbl">Videos created</div></div>
+        <div class="stat rv d3" style="--ac:#3ED598"><div class="num"><span data-count="12" data-suffix="+">0</span></div><div class="lbl">Countries</div></div>
+      </div>
+      <p class="rv" style="text-align:center; color:var(--faint); font-size:13.5px; margin-top:14px;">Live counts coming soon.</p>
+    </div>
+  </section>
+
+
+  <!-- ================= FEATURES ================= -->
+  <section id="features">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#A78BFF">Features</span>
+      <h2 class="rv d1">Everything a heavy Flow user <span class="grad">actually needs</span></h2>
+      <p class="sec-sub rv d2">Not a wrapper around one account — a full production desk for people who generate videos every single day.</p>
+      <div class="feat-grid">
+        <article class="feat rv" style="--ac:#7C5CFF">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.5l3.5 3.5L17 9.5"/><path d="M20.5 6H9a5 5 0 0 0-5 5"/><path d="M7 21.5L3.5 18 7 14.5"/><path d="M3.5 18H15a5 5 0 0 0 5-5"/></svg></div>
+          <h3>Unlimited accounts</h3>
+          <p>Add as many accounts as you like — there is no cap. Every account brings its own daily free credits, so 100 accounts means 100× the credits. FlowStudio rotates between them automatically, so one account running dry never stops your batch.</p>
+        </article>
+        <article class="feat rv d1" style="--ac:#22C3E6">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div>
+          <h3>Batch generation</h3>
+          <p>Paste all your scene prompts in one go. Every prompt becomes a task, matched to its own Flow project and tile — nothing gets mixed up.</p>
+        </article>
+        <article class="feat rv d2" style="--ac:#F5B83D">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
+          <h3>Agent Mode</h3>
+          <p>Give the batch to the built-in agent. It proposes generations with a clear credit quote — and a strict guard approves only quotes at or below the expected cost.</p>
+        </article>
+        <article class="feat rv" style="--ac:#FF6B9D">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg></div>
+          <h3>Auto-download</h3>
+          <p>Finished videos save themselves into your Downloads folder, enhanced one step up where possible — verified by content, never by filename guesswork.</p>
+        </article>
+        <article class="feat rv d1" style="--ac:#3ED598">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+          <h3>Credit planner</h3>
+          <p>Prompts are divided by real credit capacity before anything starts — about 7 credits per video, up to 7 videos per account — so a run never dies halfway. And because accounts are unlimited, your total capacity grows every time you add one.</p>
+        </article>
+        <article class="feat rv d2" style="--ac:#5ED6F2">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></div>
+          <h3>Parked-download recovery</h3>
+          <p>A download that stalls doesn't vanish. It stays parked and visible — restart one, restart all, or clear the list whenever you are ready.</p>
+        </article>
+      </div>
+
+      
+      <div class="scale-strip rv">
+        <h3>Why unlimited accounts change everything</h3>
+        <p class="scale-sub">There is no account cap — and every account you add brings its own daily free credits. Your credit pool grows with your account pool:</p>
+        <div class="scale-row">
+          <div class="scale-cell"><div class="sc-acct">1 account</div><div class="sc-cred" style="color:#5ED6F2;">~50</div><div class="sc-vid">credits a day · about 7 videos</div></div>
+          <div class="scale-arrow" aria-hidden="true">→</div>
+          <div class="scale-cell"><div class="sc-acct">10 accounts</div><div class="sc-cred" style="color:#FFCE54;">~500</div><div class="sc-vid">credits a day · about 70 videos</div></div>
+          <div class="scale-arrow" aria-hidden="true">→</div>
+          <div class="scale-cell"><div class="sc-acct">100 accounts</div><div class="sc-cred" style="color:#6FE3B4;">~5,000</div><div class="sc-vid">credits a day · about 700 videos · 100×</div></div>
+        </div>
+        <p class="scale-note">Illustration using the app's own planning rates — about 50 free credits per account per day, about 7 credits per video on Omni Flash.</p>
+      </div>
+
+      <h3 class="rv" style="font-family:var(--font-d); font-size:24px; margin-top:48px;">Models &amp; credits — what one video costs</h3>
+      <p class="rv d1" style="color:var(--muted); margin-top:8px; max-width:44em;">Every quote is shown before anything runs. Agent Mode only approves a quote at or below the expected cost for the model you picked.</p>
+      <div class="rv d2" style="overflow-x:auto;">
+      <table class="models-table">
+        <thead><tr><th>Model</th><th>Credits per video</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Omni Flash</strong></td><td>7 credits</td><td>Everyday batches — the default workhorse</td></tr>
+          <tr><td><strong>Veo Lite</strong></td><td>10 credits</td><td>Quick drafts and tests</td></tr>
+          <tr><td><strong>Veo Fast</strong></td><td>20 credits</td><td>Sharper results, still fast</td></tr>
+          <tr><td><strong>Veo Quality</strong></td><td>100 credits</td><td>Hero scenes where quality matters most</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="rv d3" style="color:var(--faint); font-size:14px; margin-top:12px;">Planning rule inside the app: prompts are split by real account capacity (about 50 free credits per account per day) before a run starts, so a batch never dies halfway. Your total credits scale with your accounts — each account you add brings its own daily free credits, so 100 accounts give you roughly 100× the credits of a single account.</p>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section id="how">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#5ED6F2">How it works</span>
+      <h2 class="rv d1">From prompts to a folder of videos, <span class="grad">in four steps</span></h2>
+      <div class="steps">
+        <div class="step rv" style="--ac:#7C5CFF"><div class="n">1</div><h3>Add accounts</h3><p>Sign in once with each Google account — add as many as you like, there is no cap. Every account adds its own daily free credits, and FlowStudio keeps them all ready and checks credits on its own.</p></div>
+        <div class="step rv d1" style="--ac:#22C3E6"><div class="n">2</div><h3>Paste prompts</h3><p>Drop in one prompt or a full batch of scenes. The planner splits them across all your accounts by credit capacity.</p></div>
+        <div class="step rv d2" style="--ac:#F5B83D"><div class="n">3</div><h3>Generate in parallel</h3><p>Accounts work side by side — a browser only opens when it actually has a job to do.</p></div>
+        <div class="step rv d3" style="--ac:#FF6B9D"><div class="n">4</div><h3>Videos in Downloads</h3><p>Each finished video is downloaded and checked automatically. You just pick them up from Downloads.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIVE SAMPLES ================= -->
+  <section id="samples" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">Live samples</span>
+      <h2 class="rv d1">Two live samples — <span class="grad">watch it, then try it</span></h2>
+      <p class="sec-sub rv d2">Sample A is the entry flow at the top of this page — splash, key portal over the blurred studio, Gmail key, unlock — looping on its own. Sample B below is in your hands: press Generate and watch three accounts produce three videos while the credits move exactly like they do in the app.</p>
+      <p class="rv d2" style="margin-top:14px;"><span class="live-tag"><i></i> Live sample — try it · Studio demo</span></p>
+
+      <div class="demo-shell rv d2" id="demo">
+        <div class="demo-top">
+          <span class="ttl">FlowStudio · Demo project</span>
+          <span class="credits-chip">Credits <b id="creditNum">200</b></span>
+        </div>
+        <textarea class="demo-prompts" id="demoPrompts" aria-label="Demo prompts, one per line">A young boy polishes shoes outside a railway station, morning light, cinematic
+An old teacher opens a worn diary as rain starts over the village school
+A street vendor arranges marigolds at dawn, steam rising from his tea stall</textarea>
+        <div class="demo-actions">
+          <button class="btn-gen" id="genBtn" type="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.8v14.4L19 12z"/></svg>
+            Generate 3 videos
+          </button>
+          <button class="btn-reset" id="resetBtn" type="button">Reset demo</button>
+          <span class="demo-status" id="demoStatus">Ready — 3 prompts, 3 accounts, 21 credits planned.</span>
+        </div>
+        <div class="demo-tiles" id="demoTiles">
+          <div class="dtile" data-tile=''>
+            <div class="thumb" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div>
+            <p class="cap">A young boy polishes shoes outside a railway station…</p>
+            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
+            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#7C5CFF,#22C3E6)"></i></div>
+          </div>
+          <div class="dtile" data-tile=''>
+            <div class="thumb" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div>
+            <p class="cap">An old teacher opens a worn diary as rain starts…</p>
+            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
+            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#FF6B9D,#F5B83D)"></i></div>
+          </div>
+          <div class="dtile" data-tile=''>
+            <div class="thumb" style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div>
+            <p class="cap">A street vendor arranges marigolds at dawn…</p>
+            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
+            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#22C3E6,#3ED598)"></i></div>
+          </div>
+        </div>
+      </div>
+      <p class="mini-cap" style="margin-top:14px;">Demo only — no real generation happens here. In the app, the same flow runs on your own accounts.</p>
+    </div>
+  </section>
+
+  <!-- ================= SCREENSHOTS / SEE THE APP ================= -->
+  
+  <section id="screenshots" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">See the app</span>
+      <h2 class="rv d1">A look inside <span class="grad">FlowStudio</span></h2>
+      <p class="sec-sub rv d2">The real screens, in the app's own Midnight Gold design — from the locked entry portal to a finished, saved video.</p>
+      <div class="shots-grid">
+        <figure class="shot-card rv">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Sign in</span></div>
+            <div class="shot-body">
+              <div class="mock-blur" aria-hidden="true"><div style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><div style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><div style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div><div style="background:linear-gradient(120deg,#F5B83D,#7C5CFF)"></div></div>
+              <div class="portal-mock">
+                <h4>Welcome to FlowStudio</h4>
+                <p class="ps">Sign in to unlock the studio</p>
+                <div class="g-btn"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.5h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8.2z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.6H2.1v2.9A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9z"/><path fill="#EA4335" d="M12 5.3c1.6 0 3.1.6 4.3 1.6l3.2-3.2A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.2 9.1 5.3 12 5.3z"/></svg> Continue with Google</div>
+                <div class="mock-field">you@example.com</div>
+                <div class="mock-field gold">FS-••••-••••-••••</div>
+                <div class="mock-activate">Activate FlowStudio</div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Sign in &amp; activate</div><p class="cd">The studio stays blurred and locked until your key is entered — one key, one PC.</p></figcaption>
+        </figure>
+        <figure class="shot-card rv d1">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Studio</span></div>
+            <div class="shot-body">
+              <div class="studio-mock">
+                <div>
+                  <div class="acct"><div class="an">Account 1</div><span class="chip">42 credits</span></div>
+                  <div class="acct"><div class="an">Account 2</div><span class="chip">50 credits</span></div>
+                  <div class="acct"><div class="an">Account 3</div><span class="chip low">6 credits</span></div>
+                </div>
+                <div>
+                  <div class="prompt-mock">A boy polishes shoes at the station, morning light…<br />The old teacher opens a worn diary…<br />Rain over the village school roof…</div>
+                  <div class="gen-mock">Generate batch</div>
+                  <div class="mini-tiles">
+                    <div class="mini-tile"><div class="th" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><span class="sv"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
+                    <div class="mini-tile"><div class="th" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><span class="sv"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Studio</div><p class="cd">Accounts with live credit chips on the left, your batch of prompts in the middle, finished videos below.</p></figcaption>
+        </figure>
+        <figure class="shot-card rv">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Downloads</span></div>
+            <div class="shot-body">
+              <div class="dl-row"><div><div class="fn">scene-01.mp4</div><div class="fs">720p · Saved to Downloads</div></div><span class="dl-saved"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
+              <div class="dl-row"><div style="flex:1;"><div class="fn">scene-02.mp4</div><div class="fs">Parked — waiting to download</div><div class="dl-bar"><i style="width:35%"></i></div></div><span class="dl-start">Start</span></div>
+              <div class="dl-row"><div style="flex:1;"><div class="fn">scene-03.mp4</div><div class="fs">Parked — waiting to download</div><div class="dl-bar"><i style="width:12%"></i></div></div><span class="dl-start">Start</span></div>
+              <p style="font-size:12.5px; color:var(--faint); margin-top:2px;">Parked downloads stay visible — start one, start all, or clear the list.</p>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Downloads</div><p class="cd">Finished videos save themselves; anything that stalls stays parked here, never lost.</p></figcaption>
+        </figure>
+        <figure class="shot-card rv d1">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Agent Mode</span></div>
+            <div class="shot-body">
+              <div class="chat-mock">Make the next scene — the teacher confronts the landlord, Veo Fast.</div>
+              <div class="proposal-mock">
+                <div class="pt">Proposal — 1 video, Veo Fast</div>
+                <p class="pc">This will cost <b>20 credits</b>. Nothing runs until you approve it.</p>
+                <div class="prop-btns"><span class="prop-approve">Approve</span><span class="prop-reject">Reject</span></div>
+                <p class="guard-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Within the expected cost for this model</p>
+              </div>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Agent Mode</div><p class="cd">The agent proposes first and shows the exact credit cost — you approve or reject before anything is spent.</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section id="pricing">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#6FE3B4">Pricing</span>
+      <h2 class="rv d1">Start free. <span class="grad">Stay because it saves hours.</span></h2>
+      <p class="sec-sub rv d2">Every plan includes the full studio — unlimited accounts, batch generation, Agent Mode and auto-download. Your key is delivered by email and activates on one PC.</p>
+      <p class="rv d2" style="margin-top:12px; display:inline-block; font-weight:700; font-size:15px; color:#FFCE54; background:rgba(245,184,61,.10); border:1px solid rgba(245,184,61,.45); padding:9px 16px; border-radius:999px;">Prices in ₹ and $ · Pay only when paid plans open — the app is free right now</p>
+      <div class="price-grid">
+        <article class="price rv">
+          <h3>Free Trial</h3>
+          <div class="amt">₹0</div>
+          <p class="per">7 days · full features</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Everything unlocked for 7 days</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Unlimited accounts</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Agent Mode included</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> No card needed to start</li>
+          </ul>
+          <a class="pcta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">Download &amp; start trial</a>
+        </article>
+        <article class="price rv d1">
+          <h3>Limited</h3>
+          <div class="amt">₹99 <small>/ $1</small></div>
+          <p class="per">A light plan for trying FlowStudio properly</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Full studio, all features</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Batch generation + planner</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Auto-download to Downloads</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> WhatsApp support</li>
+          </ul>
+          <a class="pcta" href="#download">Get Limited</a>
+        </article>
+        <article class="price best rv d2">
+          <span class="best-tag">Best value</span>
+          <h3>Full · 1 Year</h3>
+          <div class="amt">₹499 <small>/ $5</small></div>
+          <p class="per">One full year — the plan daily creators pick</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Everything in Limited</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> 12 months of updates included</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Priority WhatsApp support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Best per-month price</li>
+          </ul>
+          <a class="pcta" href="#download">Get Full — 1 Year</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT'S NEW ================= -->
+  <section id="whatsnew" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#A78BFF">What's new</span>
+      <h2 class="rv d1">Changelog — <span class="grad">every version, in the open</span></h2>
+      <p class="sec-sub rv d2">What changed in each release — and what is coming next.</p>
+      <div class="changelog-list">
+        <article class="change rv"><div class="ver-badge">v1.0.8<span>Current release</span></div><ul><li>A brand-new welcome: an animated splash as the app opens.</li><li>The sign-in portal now floats over your blurred studio.</li><li>Sign-up asks your name, so your key email greets you properly.</li><li>Gmail opens itself after Google sign-in, so your key is one copy away.</li><li>WhatsApp support is built in — help is one tap away.</li></ul></article>
+        <article class="change rv d1"><div class="ver-badge">v1.0.7<span>Previous</span></div><ul><li>Key delivered by email — short keys in the FS-XXXX-XXXX-XXXX format.</li><li>Compact sign-in that fits one screen with no scrolling.</li><li>The studio opens at its full default size after login.</li><li>Sign-up verifies your email link first, in three clear steps.</li></ul></article>
+        <article class="change rv d1"><div class="ver-badge">v1.0.6<span>Previous</span></div><ul><li>Cleaner first-run experience and steadier window behaviour.</li><li>Download reliability fixes, verified file by file.</li></ul></article>
+        <article class="change rv d2"><div class="ver-badge">v1.0.5<span>Previous</span></div><ul><li>New entry screens modelled on a calmer, guided sign-in flow.</li><li>Sign-up to key delivery made shorter and clearer.</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SYSTEM REQUIREMENTS ================= -->
+  <section id="requirements" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#5ED6F2">System requirements</span>
+      <h2 class="rv d1">What your PC <span class="grad">needs</span></h2>
+      <p class="sec-sub rv d2">A quick check before you install, so the first run goes smoothly.</p>
+      <div class="req-grid">
+        <div class="req-card rv"><h3>Your computer</h3><ul><li>Windows 10 or Windows 11 (64-bit)</li><li>8 GB RAM — 16 GB recommended for big parallel batches</li><li>2 GB free disk space for the app, plus room for your videos</li><li>A screen that fits the studio comfortably at its default size</li></ul></div>
+        <div class="req-card rv d1"><h3>Connection &amp; accounts</h3><ul><li>Internet for sign-in, first activation and video generation</li><li>At least one Google account that can use Flow</li><li>Your activation key from your email — one key, one PC</li><li>Downloads land in your standard Downloads folder</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TUTORIALS ================= -->
+  <section id="tutorials" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FF8FB5">Tutorials</span>
+      <h2 class="rv d1">Learn it in <span class="grad">one sitting</span></h2>
+      <p class="sec-sub rv d2">Seven short guides with the real steps — open any guide and follow along in the app.</p>
+      <div class="tut-acc">
+        <div class="faq rv"><button type="button" aria-expanded="false">1 · Download &amp; install<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Press the Download button on this page and save FlowStudio_Setup.exe (about 74 MB).</li><li>Open the file from your Downloads folder and follow the installer — it takes under a minute.</li><li>If Windows shows a safety prompt, choose “More info” and then “Run anyway” — the setup is the official one from this page.</li><li>FlowStudio opens on its animated splash, then shows the sign-in portal over the blurred studio.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">2 · Activate with your key<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Create your account in the portal — your name, email and a password (or continue with Google).</li><li>Your key arrives by email. With Google sign-in, your mail opens for you so the key is right there.</li><li>Copy the key (it looks like FS-XXXX-XXXX-XXXX), paste it into the portal and press Activate.</li><li>The blur lifts and the studio unlocks. Without a valid key the app stays locked — nothing inside can be used.</li><li>One key works on one PC. If you change or format your PC, message support on WhatsApp for a reset.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">3 · Add Google accounts<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Open the Accounts area and press Add account.</li><li>Sign in with that Google account once — FlowStudio keeps it ready for generation.</li><li>Repeat for every account you want — there is no limit. Add as many as you like: every account adds its own daily free credits, so 100 accounts means 100× the credits of one.</li><li>Credits are checked automatically, so you always see which accounts are ready and which are dry.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">4 · Your first video<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Write one clear prompt: subject, place, action and mood in a single line.</li><li>Pick the model (Omni Flash at 7 credits is the friendly default) and press Generate.</li><li>Watch the tile fill up — the progress line only runs on the video that is actually generating.</li><li>When it finishes, the video saves itself into your Downloads folder. Press play and check it.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">5 · Batch generation<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Paste all your scene prompts at once — one prompt per line, the whole batch in a single run.</li><li>The planner divides the batch by credit capacity first: about 7 credits per video, up to 7 videos per account.</li><li>A browser only opens for an account that actually has work — no idle windows.</li><li>Accounts generate in parallel and every finished video is matched to its own prompt and saved.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">6 · Agent Mode<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Open Agent Mode and describe the batch you want in one message.</li><li>The agent proposes the generations with one combined credit quote.</li><li>The guard checks the quote against the expected cost for your model — at or below, it proceeds; above, it is rejected.</li><li>If a scene needs a fix, the repair happens in the same conversation and comes back as a fresh proposal.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">7 · Downloads &amp; parked videos<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Finished videos save into your Downloads folder, enhanced one step up where possible (for example 360p to 720p).</li><li>Every file is verified by its content — never trust the filename order alone.</li><li>If a download stalls, it stays parked and visible in the app instead of disappearing.</li><li>Restart one parked download, restart all of them, or clear the list whenever you are ready.</li></ol></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUPPORT ================= -->
+  <section id="support" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#6FE3B4">Support</span>
+      <h2 class="rv d1">Stuck somewhere? <span class="grad">Talk to a human</span></h2>
+      <p class="sec-sub rv d2">Fastest reply on WhatsApp — most questions get an answer the same day. Send a screenshot of where you are stuck and you will get the exact next step, not a generic reply.</p>
+      <div class="rv d2" style="margin-top:26px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+        <a class="wa-link" style="margin-left:0;" href="https://wa.me/918198966902" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a class="btn-ghost" href="#faq">Read the FAQ first</a>
+      </div>
+      <p class="rv d3" style="color:var(--faint); font-size:14.5px; margin-top:16px;">Support covers activation, key resets after a PC change, account setup and download problems. There is no support email — WhatsApp is the one channel, so nothing gets lost.</p>
+    </div>
+  </section>
+
+  <!-- ================= PRIVACY &amp; TERMS ================= -->
+  <section id="privacy" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">Privacy &amp; terms</span>
+      <h2 class="rv d1">Plain words, <span class="grad">no fine-print tricks</span></h2>
+      <div class="legal-grid">
+        <div class="legal-card rv"><h3>Privacy — your accounts stay yours</h3><p>Your Google accounts sign in on your own PC and stay there. FlowStudio does not upload your account passwords anywhere, and your prompts and videos are yours — they are generated on your accounts and saved on your computer. We never sell your data. The only things the service itself handles are your sign-up name and email, and the key issued to you, so activation and support can work.</p></div>
+        <div class="legal-card rv d1"><h3>Terms — the short version</h3><p>One key activates on one PC; sharing a key does not extend it, and a key can be reset for a genuine PC change through support. The free trial runs 7 days with full features. Paid plans apply only when they open — until then the app is free. You are responsible for the videos you create and for using your own accounts within the video service's own rules.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#5ED6F2">FAQ</span>
+      <h2 class="rv d1">Questions, <span class="grad">answered straight</span></h2>
+      <p class="sec-sub rv d2">The things people ask before their first batch — answered without fine print.</p>
+      <div class="faq-list">
+        <div class="faq rv">
+          <button type="button" aria-expanded="false">Is FlowStudio free?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="ans"><p>Yes — the first 7 days are completely free with every feature unlocked, and no card is needed. After the trial you can continue with the Limited plan (₹99 / $1) or the Full 1 Year plan (₹499 / $5).</p></div>
+        </div>
+        <div class="faq rv">
+          <button type="button" aria-expanded="false">How many accounts can I add?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="ans"><p>As many as you like — there is no cap. Every Google account you add brings its own daily free credits, so your total grows with your pool: 100 accounts means roughly 100× the credits of a single account. The credit planner divides your prompts across them — roughly 7 credits per video, up to about 7 videos per account per run — so no single account carries the whole batch.</p></div>
+        </div>
+        <div class="faq rv">
+          <button type="button" aria-expanded="false">Which models and credits does it use?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="ans"><p>It works with the models available in Google Flow, including Omni and Veo. Agent Mode always shows the credit quote before anything runs, and its guard only approves quotes at or below the expected cost for the model you picked.</p></div>
+        </div>
+        <div class="faq rv">
+          <button type="button" aria-expanded="false">Is my key tied to one PC?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="ans"><p>Yes. Your key activates on one computer and the app won't open without it — the studio stays locked until a valid key is entered. Changed or formatted your PC? Contact support on WhatsApp and the binding can be reset for you.</p></div>
+        </div>
+        <div class="faq rv">
+          <button type="button" aria-expanded="false">Where do my videos save?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="ans"><p>Straight into your Downloads folder — the same place every time, verified file by file. If a download ever stalls, it stays parked in the app instead of disappearing, ready to restart when you are.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DOWNLOAD ================= -->
+  <section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br />is one download away</h2>
+        <span class="ver">FlowStudio v1.0.8 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <a class="brand" href="#top" aria-label="FlowStudio home">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+      <span>Flow<span class="grad">Studio</span></span>
+    </a>
+    <span class="made">Made for creators who ship videos every day.</span>
+    <a class="wa-link" href="https://wa.me/918198966902" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+      WhatsApp support
+    </a>
+    <div class="copy">
+      <span>© <span id="year">2026</span> FlowStudio. All rights reserved.</span>
+      <span>FlowStudio — multi-account AI video generation for Windows.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/918198966902" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="27" height="27" viewBox="0 0 24 24" fill="#0E2A1D" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+</a>
+
+
+
+<script>
+//<![CDATA[
+
+(function(){
+  var btn = document.getElementById("menuBtn");
+  var nav = document.getElementById("tabTrack");
+  if (!btn || !nav) return;
+  btn.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  });
+  nav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      nav.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+})();
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+
+(function(){
+  var btn = document.getElementById("themeToggle");
+  if (!btn) return;
+  function sync(){
+    var light = document.documentElement.getAttribute("data-theme") === "light";
+    btn.setAttribute("aria-pressed", light ? "true" : "false");
+    btn.setAttribute("aria-label", light ? "Switch to dark mode" : "Switch to light mode");
+  }
+  btn.addEventListener("click", function(){
+    var next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("fs-theme", next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* duplicate marquee content for a seamless loop */
+  var track = document.getElementById("marqueeTrack");
+  track.innerHTML += track.innerHTML;
+
+  /* ---------- scroll reveals + counters ---------- */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute("data-count"));
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    if (reduced){ el.textContent = prefix + target.toLocaleString("en-US") + suffix; return; }
+    var start = null, dur = 1400;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased).toLocaleString("en-US") + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add("in");
+        e.target.querySelectorAll("[data-count]").forEach(function(c){
+          if (!c.dataset.done){ c.dataset.done = "1"; animateCount(c); }
+        });
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.14 });
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* ---------- gentle parallax on aurora blobs ---------- */
+  if (!reduced){
+    var blobs = document.querySelectorAll("[data-parallax]");
+    var ticking = false;
+    window.addEventListener("scroll", function(){
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY;
+        blobs.forEach(function(b){
+          var f = parseFloat(b.getAttribute("data-parallax"));
+          b.style.translate = "0 " + (y * f / 100) + "px";
+        });
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  /* ---------- hero mini demo loop ---------- */
+  var scenes = document.querySelectorAll("#miniStage .scene");
+  var dots = document.querySelectorAll("#miniDots i");
+  var splashStatus = document.getElementById("splashStatus");
+  var keyType = document.getElementById("keyType");
+  var splashLines = ["Engine starting…", "Accounts getting ready…", "Almost there…"];
+  var sceneIdx = 0, sceneTimer = null, splashTimer = null, keyTimer = null;
+
+  function showScene(i){
+    sceneIdx = i;
+    scenes.forEach(function(s, j){ s.classList.toggle("on", j === i); });
+    dots.forEach(function(d, j){ d.classList.toggle("on", j === i); });
+    clearInterval(splashTimer); clearInterval(keyTimer);
+    if (i === 0){
+      var li = 0; splashStatus.textContent = splashLines[0];
+      splashTimer = setInterval(function(){ li = (li + 1) % splashLines.length; splashStatus.textContent = splashLines[li]; }, 950);
+    }
+    if (i === 1){
+      var full = "FS-7K2P-9QXD-4MTA", shown = 4;
+      keyType.textContent = full.slice(0, 4) + "-••••-••••-••••";
+      keyTimer = setInterval(function(){
+        shown += 2;
+        if (shown >= full.length){ keyType.textContent = full; clearInterval(keyTimer); return; }
+        keyType.textContent = full.slice(0, shown) + "•".repeat(Math.max(0, full.length - shown)).replace(/(.{4})(?=.)/g, "$1-");
+      }, 160);
+    }
+  }
+  function cycleScenes(){
+    sceneTimer = setInterval(function(){ showScene((sceneIdx + 1) % scenes.length); }, 3400);
+  }
+  if (reduced){ showScene(2); }
+  else { showScene(0); cycleScenes(); }
+
+  /* ---------- interactive studio demo ---------- */
+  var genBtn = document.getElementById("genBtn");
+  var resetBtn = document.getElementById("resetBtn");
+  var creditNum = document.getElementById("creditNum");
+  var demoStatus = document.getElementById("demoStatus");
+  var tiles = Array.prototype.slice.call(document.querySelectorAll("[data-tile]"));
+  var CREDITS_START = 200, PER_VIDEO = 7;
+  var credits = CREDITS_START, running = false, timers = [];
+
+  function setCredits(v){
+    credits = v; creditNum.textContent = v;
+  }
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+
+  function setTile(tile, label, color, pct){
+    var st = tile.querySelector("[data-stat]");
+    var bar = tile.querySelector("[data-bar]");
+    st.textContent = label; st.style.color = color;
+    bar.style.width = pct + "%";
+  }
+  function resetDemo(){
+    clearTimers(); running = false;
+    genBtn.disabled = false;
+    setCredits(CREDITS_START);
+    tiles.forEach(function(t){
+      t.classList.remove("working", "done");
+      setTile(t, "Idle", "#8E88B8", 0);
+    });
+    demoStatus.textContent = "Ready — 3 prompts, 3 accounts, 21 credits planned.";
+  }
+  function runTile(tile, delay){
+    later(function(){ tile.classList.add("working"); setTile(tile, "Queued", "#FFCE54", 8); }, delay);
+    later(function(){ setTile(tile, "Generating", "#5ED6F2", 34); }, delay + 500);
+    later(function(){ setTile(tile, "Generating", "#5ED6F2", 68); }, delay + 1500);
+    later(function(){ setTile(tile, "Downloading", "#FF8FB5", 88); }, delay + 2300);
+    later(function(){
+      tile.classList.remove("working"); tile.classList.add("done");
+      setTile(tile, "✓ Saved to Downloads", "#3ED598", 100);
+    }, delay + 3000);
+  }
+  genBtn.addEventListener("click", function(){
+    if (running) return;
+    running = true; genBtn.disabled = true;
+    tiles.forEach(function(t){ t.classList.remove("done"); });
+    demoStatus.textContent = "Planner split the batch across 3 accounts — generating in parallel…";
+    tiles.forEach(function(t, i){ runTile(t, i * 450); });
+    /* credits tick down 200 -> 179 as the three videos complete */
+    var spent = 0;
+    var cInt = setInterval(function(){
+      spent += 1; setCredits(CREDITS_START - spent);
+      if (spent >= PER_VIDEO * 3) clearInterval(cInt);
+    }, 165);
+    timers.push(cInt);
+    later(function(){
+      running = false; genBtn.disabled = false;
+      demoStatus.textContent = "Done — 3 videos saved to Downloads · 21 credits used · 179 left.";
+    }, 3000 + 2 * 450 + 350);
+  });
+  resetBtn.addEventListener("click", resetDemo);
+
+  /* ---------- scroll progress bar + pill-tab indicator ---------- */
+  var pBar = document.getElementById("progressBar");
+  var tabTrack = document.getElementById("tabTrack");
+  var tabIndicator = document.getElementById("tabIndicator");
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav]"));
+  var currentTab = "home";
+  function moveIndicator(link, keepScroll){
+    if (!link || !tabIndicator) return;
+    tabIndicator.style.opacity = "1";
+    tabIndicator.style.left = link.offsetLeft + "px";
+    tabIndicator.style.width = link.offsetWidth + "px";
+    if (!keepScroll && tabTrack){
+      var target = link.offsetLeft - (tabTrack.clientWidth - link.offsetWidth) / 2;
+      tabTrack.scrollTo({ left: Math.max(0, target), behavior: reduced ? "auto" : "smooth" });
+    }
+  }
+  function setActiveTab(name, keepScroll){
+    var link = null;
+    navLinks.forEach(function(a){
+      var on = a.getAttribute("data-nav") === name;
+      a.classList.toggle("active", on);
+      if (on) link = a;
+    });
+    if (link){ currentTab = name; moveIndicator(link, keepScroll); }
+  }
+  navLinks.forEach(function(a){
+    a.addEventListener("click", function(){ setActiveTab(a.getAttribute("data-nav"), false); });
+  });
+  var spyMap = [
+    ["top","home"],["features","features"],["styles","features"],["how","features"],["samples","features"],["screenshots","features"],
+    ["pricing","pricing"],["whatsnew","whatsnew"],["requirements","whatsnew"],
+    ["tutorials","tutorials"],["support","tutorials"],["privacy","tutorials"],
+    ["faq","faq"],["download","download"]
+  ];
+  function onScrollUI(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    pBar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    var cur = "home";
+    spyMap.forEach(function(pair){
+      var el = document.getElementById(pair[0]);
+      if (el && el.getBoundingClientRect().top <= 160) cur = pair[1];
+    });
+    if (cur !== currentTab) setActiveTab(cur, false);
+  }
+  window.addEventListener("scroll", onScrollUI, { passive: true });
+  window.addEventListener("resize", function(){ setActiveTab(currentTab, true); });
+  window.addEventListener("load", function(){ setActiveTab(currentTab, true); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setActiveTab(currentTab, true); });
+  setActiveTab("home", true);
+  onScrollUI();
+
+  /* ---------- button & tab style samples ---------- */
+  document.querySelectorAll("[data-sample-tabs]").forEach(function(group){
+    var card = group.closest(".style-card");
+    var status = card ? card.querySelector("[data-sample-status]") : null;
+    var label = card ? card.getAttribute("data-style-label") : "Style";
+    group.querySelectorAll("button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        group.querySelectorAll("button").forEach(function(b){
+          b.classList.remove("on"); b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("on"); btn.setAttribute("aria-selected", "true");
+        if (status) status.textContent = label + " · " + btn.textContent.trim() + " tab selected";
+      });
+    });
+  });
+  document.querySelectorAll("[data-sample-btn]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var card = btn.closest(".style-card");
+      var status = card ? card.querySelector("[data-sample-status]") : null;
+      var label = card ? card.getAttribute("data-style-label") : "Style";
+      if (status) status.textContent = label + " · \u201C" + btn.textContent.trim() + "\u201D pressed — sample only";
+    });
+  });
+
+  /* ---------- FAQ accordions ---------- */
+  document.querySelectorAll(".faq").forEach(function(faq){
+    var btn = faq.querySelector("button");
+    var ans = faq.querySelector(".ans");
+    btn.addEventListener("click", function(){
+      var open = faq.classList.contains("open");
+      document.querySelectorAll(".faq.open").forEach(function(o){
+        o.classList.remove("open");
+        o.querySelector(".ans").style.maxHeight = "0px";
+        o.querySelector("button").setAttribute("aria-expanded", "false");
+      });
+      if (!open){
+        faq.classList.add("open");
+        ans.style.maxHeight = ans.scrollHeight + "px";
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+})();
+
+//]]>
+</script>
+<b:section id='fs-main' maxwidgets='1' name='Main' showaddelement='no'/>
+</body>
+</html>
