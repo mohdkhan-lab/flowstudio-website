@@ -822,7 +822,7 @@
       <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19"/></svg>
       <svg class="ic-moon" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a.6.6 0 0 0-.8-.8 10.2 10.2 0 1 0 12.4 12.4.6.6 0 0 0-.8-.8z"/></svg>
     </button>
-    <a class="nav-cta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">Download Free</a>
+    <a class="nav-cta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">Download Free</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tabTrack">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -838,7 +838,7 @@
         <h1 class="rv in d1"><span class="h-serif">Prompts in.</span><span class="h-sans">Videos out.</span></h1>
         <p class="hero-sub rv in d2">Paste your prompts and download finished videos. FlowStudio runs your Google Flow accounts like a team — add as many accounts as you like, there is no cap, and every account adds its own daily free credits. It rotates accounts, generates in parallel, watches the credits and saves every video straight to your Downloads folder.</p>
         <div class="hero-cta rv in d3">
-          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
             Download FlowStudio — Free 7-day trial
           </a>
@@ -1169,7 +1169,7 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Agent Mode included</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ED598" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> No card needed to start</li>
           </ul>
-          <a class="pcta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">Download &amp; start trial</a>
+          <a class="pcta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">Download &amp; start trial</a>
         </article>
         <article class="price rv d1">
           <h3>Limited</h3>
@@ -1207,7 +1207,8 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       <h2 class="rv d1">Changelog — <span class="grad">every version, in the open</span></h2>
       <p class="sec-sub rv d2">What changed in each release — and what is coming next.</p>
       <div class="changelog-list">
-        <article class="change rv"><div class="ver-badge">v1.0.8<span>Current release</span></div><ul><li>A brand-new welcome: an animated splash as the app opens.</li><li>The sign-in portal now floats over your blurred studio.</li><li>Sign-up asks your name, so your key email greets you properly.</li><li>Gmail opens itself after Google sign-in, so your key is one copy away.</li><li>WhatsApp support is built in — help is one tap away.</li></ul></article>
+        <article class="change rv"><div class="ver-badge">v1.0.9<span>Current release</span></div><ul><li>The sign-in portal feels alive — buttons lift and shine on hover, and the Sign in / Create account switch now slides.</li><li>Fields carry icons: a key with a paste button, and a show/hide eye on the password field.</li><li>A wrong key shakes the card gently instead of just sitting there.</li><li>The Google button wears the real ‘G’ now.</li></ul></article>
+        <article class="change rv"><div class="ver-badge">v1.0.8<span>Previous</span></div><ul><li>A brand-new welcome: an animated splash as the app opens.</li><li>The sign-in portal now floats over your blurred studio.</li><li>Sign-up asks your name, so your key email greets you properly.</li><li>Gmail opens itself after Google sign-in, so your key is one copy away.</li><li>WhatsApp support is built in — help is one tap away.</li></ul></article>
         <article class="change rv d1"><div class="ver-badge">v1.0.7<span>Previous</span></div><ul><li>Key delivered by email — short keys in the FS-XXXX-XXXX-XXXX format.</li><li>Compact sign-in that fits one screen with no scrolling.</li><li>The studio opens at its full default size after login.</li><li>Sign-up verifies your email link first, in three clear steps.</li></ul></article>
         <article class="change rv d1"><div class="ver-badge">v1.0.6<span>Previous</span></div><ul><li>Cleaner first-run experience and steadier window behaviour.</li><li>Download reliability fixes, verified file by file.</li></ul></article>
         <article class="change rv d2"><div class="ver-badge">v1.0.5<span>Previous</span></div><ul><li>New entry screens modelled on a calmer, guided sign-in flow.</li><li>Sign-up to key delivery made shorter and clearer.</li></ul></article>
@@ -1312,9 +1313,9 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       <div class="dl-panel rv">
         <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
         <h2>Your next batch of videos<br />is one download away</h2>
-        <span class="ver">FlowStudio v1.0.8 for Windows · Setup ≈ 74 MB</span>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
         <div class="cta-row">
-          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.8/FlowStudio_Setup.exe">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
             Download FlowStudio — Free 7-day trial
           </a>
