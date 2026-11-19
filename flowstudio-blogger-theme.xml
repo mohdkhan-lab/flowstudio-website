@@ -1178,7 +1178,7 @@
       min-height:48px; padding:0 14px; border-radius:11px;
       background:#1E1E24; border:1px solid #2A2A32; color:#fff; font-size:14px; font-weight:600;
     }
-    .nav-links a::after{ content:"›"; font-size:19px; font-weight:400; line-height:1; opacity:.55; width:auto; height:auto; border:none; transform:none; margin-left:0; }
+    .nav-links a::after{ content:"\203A"; font-size:19px; font-weight:400; line-height:1; opacity:.55; width:auto; height:auto; border:none; transform:none; margin-left:0; }
     .nav-links a:not(.active){ box-shadow:none; }
     .nav-links a:hover{ background:#26262E; color:#fff; }
     .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; box-shadow:0 4px 14px rgba(245,184,61,.3); }
@@ -1188,6 +1188,23 @@
     html[data-theme="light"] .nav-links a:hover{ background:#FBF6E9; color:#1C1917; }
     html[data-theme="light"] .nav-links a:not(.active){ box-shadow:none; }
     html[data-theme="light"] .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; }
+  }
+
+  /* ===== Desktop only (>1020px): the tab menu goes back to how it was
+     before — plain text links, no button look at all. No track/panel
+     behind the links, no gold pill on the current page; the active
+     page is just gold text. The button-style menu stays ONLY in the
+     mobile/tablet dropdown above. Everything else is untouched. ===== */
+  @media (min-width:1021px){
+    .nav-links{ background:transparent; border:none; box-shadow:none; padding:0; border-radius:0; gap:4px; }
+    .nav-links a{ background:transparent; border:none; box-shadow:none; border-radius:0; min-height:0; padding:8px 10px; }
+    .nav-links a:hover{ background:transparent; color:#fff; }
+    .nav-links a:active{ transform:none; }
+    .nav-links a.active{ background:transparent; box-shadow:none; color:#FFCE54; font-weight:700; }
+    html[data-theme="light"] .nav-links{ background:transparent; border:none; box-shadow:none; }
+    html[data-theme="light"] .nav-links a{ background:transparent; }
+    html[data-theme="light"] .nav-links a:hover{ background:transparent; color:#1C1917; }
+    html[data-theme="light"] .nav-links a.active{ background:transparent; box-shadow:none; color:#8A5F0A; }
   }
 ]]></b:skin>
 </head>
