@@ -1216,6 +1216,10 @@
     html[data-theme="light"] .nav-links a:hover{ background:transparent; color:#1C1917; }
     html[data-theme="light"] .nav-links a.active{ background:transparent; box-shadow:none; color:#8A5F0A; }
   }
+
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;padding:16px 0 2px}
+.foot-links a{color:var(--muted);text-decoration:none;font-size:13.5px}
+.foot-links a:hover{color:var(--gold-text)}
 ]]></b:skin>
 </head>
 <body>
@@ -1230,19 +1234,19 @@
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="FlowStudio home">
+    <a class="brand" href="https://flowstudioapp.blogspot.com/" aria-label="FlowStudio home">
       <svg class="logo-mark" width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><rect x="2" y="2" width="44" height="44" rx="12" fill="none" stroke="rgba(245,184,61,.35)"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
       <span>Flow<span class="grad">Studio</span></span>
     </a>
     <nav class="nav-links" id="tabTrack" aria-label="Main sections">
-      <a href="#top" data-nav="home" class="active">Home</a>
-      <a href="#features" data-nav="features">Features</a>
-      <a href="#compare" data-nav="compare">Compare</a>
-      <a href="#how" data-nav="features">How it works</a>
-      <a href="#tutorials" data-nav="tutorials">Tutorials</a>
-      <a href="#pricing" data-nav="pricing">Pricing</a>
-      <a href="#whatsnew" data-nav="whatsnew">What's New</a>
-      <a href="#faq" data-nav="faq">FAQ</a>
+      <a href="https://flowstudioapp.blogspot.com/" data-nav="home" class="active">Home</a>
+      <a href="https://flowstudioapp.blogspot.com/p/features.html" data-nav="features">Features</a>
+      <a href="https://flowstudioapp.blogspot.com/p/compare.html" data-nav="compare">Compare</a>
+      <a href="https://flowstudioapp.blogspot.com/p/how-it-works.html" data-nav="features">How it works</a>
+      <a href="https://flowstudioapp.blogspot.com/p/tutorials.html" data-nav="tutorials">Tutorials</a>
+      <a href="https://flowstudioapp.blogspot.com/p/pricing.html" data-nav="pricing">Pricing</a>
+      <a href="https://flowstudioapp.blogspot.com/p/whats-new.html" data-nav="whatsnew">What's New</a>
+      <a href="https://flowstudioapp.blogspot.com/p/faq.html" data-nav="faq">FAQ</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
       <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19"/></svg>
@@ -1257,8 +1261,8 @@
 </header>
 
 <main id="top">
-  <!-- ================= HERO ================= -->
-  <div class="hero">
+<b:if cond='data:blog.pageType == "index"'>
+<div class="hero">
     <div class="wrap hero-grid">
       <div>
         <span class="pill rv in"><span class="pill-chip">FlowStudio</span> Multi-account AI video studio for Windows</span>
@@ -1269,7 +1273,7 @@
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
             Download FlowStudio — Free 7-day trial
           </a>
-          <a class="btn-ghost" href="#features">
+          <a class="btn-ghost" href="https://flowstudioapp.blogspot.com/p/features.html">
             See what you get
           </a>
         </div>
@@ -1340,12 +1344,7 @@
       </div>
     </div>
   </div>
-
-  <!-- ================= BUTTON SAMPLES ================= -->
-  
-
-  <!-- ================= STATS ================= -->
-  <section style="padding-top:56px;">
+<section style="padding-top:56px;">
     <div class="wrap">
       <div class="stats">
         <div class="stat rv" style="--ac:#7C5CFF"><div class="num" style="font-size:clamp(25px,3.1vw,36px); padding-top:4px;">Unlimited</div><div class="lbl">accounts — no cap; credits scale with every account you add</div></div>
@@ -1355,8 +1354,7 @@
       </div>
     </div>
   </section>
-  <!-- ================= DEMO STATS BAND ================= -->
-  <section style="padding-top:28px; padding-bottom:8px;" aria-label="FlowStudio in numbers">
+<section style="padding-top:28px; padding-bottom:8px;" aria-label="FlowStudio in numbers">
     <div class="wrap">
       <div class="stats" style="margin-top:0;">
         <div class="stat rv" style="--ac:#F5B83D"><div class="num"><span data-count="950" data-suffix="+">0</span></div><div class="lbl">Downloads</div></div>
@@ -1367,10 +1365,73 @@
       <p class="rv" style="text-align:center; color:var(--faint); font-size:13.5px; margin-top:14px;">Live counts coming soon.</p>
     </div>
   </section>
+<section id="samples" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">Live samples</span>
+      <h2 class="rv d1">Two live samples — <span class="grad">watch it, then try it</span></h2>
+      <p class="sec-sub rv d2">Sample A is the entry flow at the top of this page — splash, key portal over the blurred studio, Gmail key, unlock — looping on its own. Sample B below is in your hands: press Generate and watch three accounts produce three videos while the credits move exactly like they do in the app.</p>
+      <p class="rv d2" style="margin-top:14px;"><span class="live-tag"><i></i> Live sample — try it · Studio demo</span></p>
 
-
-  <!-- ================= FEATURES ================= -->
-  <section id="features">
+      <div class="demo-shell rv d2" id="demo">
+        <div class="demo-top">
+          <span class="ttl">FlowStudio · Demo project</span>
+          <span class="credits-chip">Credits <b id="creditNum">200</b></span>
+        </div>
+        <textarea class="demo-prompts" id="demoPrompts" aria-label="Demo prompts, one per line">A young boy polishes shoes outside a railway station, morning light, cinematic
+An old teacher opens a worn diary as rain starts over the village school
+A street vendor arranges marigolds at dawn, steam rising from his tea stall</textarea>
+        <div class="demo-actions">
+          <button class="btn-gen" id="genBtn" type="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.8v14.4L19 12z"/></svg>
+            Generate 3 videos
+          </button>
+          <button class="btn-reset" id="resetBtn" type="button">Reset demo</button>
+          <span class="demo-status" id="demoStatus">Ready — 3 prompts, 3 accounts, 21 credits planned.</span>
+        </div>
+        <div class="demo-tiles" id="demoTiles">
+          <div class="dtile" data-tile=''>
+            <div class="thumb" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div>
+            <p class="cap">A young boy polishes shoes outside a railway station…</p>
+            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
+            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#7C5CFF,#22C3E6)"></i></div>
+          </div>
+          <div class="dtile" data-tile=''>
+            <div class="thumb" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div>
+            <p class="cap">An old teacher opens a worn diary as rain starts…</p>
+            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
+            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#FF6B9D,#F5B83D)"></i></div>
+          </div>
+          <div class="dtile" data-tile=''>
+            <div class="thumb" style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div>
+            <p class="cap">A street vendor arranges marigolds at dawn…</p>
+            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
+            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#22C3E6,#3ED598)"></i></div>
+          </div>
+        </div>
+      </div>
+      <p class="mini-cap" style="margin-top:14px;">Demo only — no real generation happens here. In the app, the same flow runs on your own accounts.</p>
+    </div>
+  </section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/features.html"'>
+<section id="features">
     <div class="wrap">
       <span class="kicker rv" style="color:#A78BFF">Features</span>
       <h2 class="rv d1">Everything a heavy Flow user <span class="grad">actually needs</span></h2>
@@ -1439,10 +1500,102 @@
       <p class="rv d3" style="color:var(--faint); font-size:14px; margin-top:12px;">Planning rule inside the app: prompts are split by real account capacity (about 50 free credits per account per day) before a run starts, so a batch never dies halfway. Your total credits scale with your accounts — each account you add brings its own daily free credits, so 100 accounts give you roughly 100× the credits of a single account.</p>
     </div>
   </section>
-
-  <!-- ================= COMPARE ================= -->
-  
-  <section id="compare">
+<section id="screenshots" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">See the app</span>
+      <h2 class="rv d1">A look inside <span class="grad">FlowStudio</span></h2>
+      <p class="sec-sub rv d2">The real screens, in the app's own Midnight Gold design — from the locked entry portal to a finished, saved video.</p>
+      <div class="shots-grid">
+        <figure class="shot-card rv">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Sign in</span></div>
+            <div class="shot-body">
+              <div class="mock-blur" aria-hidden="true"><div style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><div style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><div style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div><div style="background:linear-gradient(120deg,#F5B83D,#7C5CFF)"></div></div>
+              <div class="portal-mock">
+                <h4>Welcome to FlowStudio</h4>
+                <p class="ps">Sign in to unlock the studio</p>
+                <div class="g-btn"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.5h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8.2z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.6H2.1v2.9A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9z"/><path fill="#EA4335" d="M12 5.3c1.6 0 3.1.6 4.3 1.6l3.2-3.2A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.2 9.1 5.3 12 5.3z"/></svg> Continue with Google</div>
+                <div class="mock-field">you@example.com</div>
+                <div class="mock-field gold">FS-••••-••••-••••</div>
+                <div class="mock-activate">Activate FlowStudio</div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Sign in &amp; activate</div><p class="cd">The studio stays blurred and locked until your key is entered — one key, one PC.</p></figcaption>
+        </figure>
+        <figure class="shot-card rv d1">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Studio</span></div>
+            <div class="shot-body">
+              <div class="studio-mock">
+                <div>
+                  <div class="acct"><div class="an">Account 1</div><span class="chip">42 credits</span></div>
+                  <div class="acct"><div class="an">Account 2</div><span class="chip">50 credits</span></div>
+                  <div class="acct"><div class="an">Account 3</div><span class="chip low">6 credits</span></div>
+                </div>
+                <div>
+                  <div class="prompt-mock">A boy polishes shoes at the station, morning light…<br/>The old teacher opens a worn diary…<br/>Rain over the village school roof…</div>
+                  <div class="gen-mock">Generate batch</div>
+                  <div class="mini-tiles">
+                    <div class="mini-tile"><div class="th" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><span class="sv"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
+                    <div class="mini-tile"><div class="th" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><span class="sv"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Studio</div><p class="cd">Accounts with live credit chips on the left, your batch of prompts in the middle, finished videos below.</p></figcaption>
+        </figure>
+        <figure class="shot-card rv">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Downloads</span></div>
+            <div class="shot-body">
+              <div class="dl-row"><div><div class="fn">scene-01.mp4</div><div class="fs">720p · Saved to Downloads</div></div><span class="dl-saved"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
+              <div class="dl-row"><div style="flex:1;"><div class="fn">scene-02.mp4</div><div class="fs">Parked — waiting to download</div><div class="dl-bar"><i style="width:35%"></i></div></div><span class="dl-start">Start</span></div>
+              <div class="dl-row"><div style="flex:1;"><div class="fn">scene-03.mp4</div><div class="fs">Parked — waiting to download</div><div class="dl-bar"><i style="width:12%"></i></div></div><span class="dl-start">Start</span></div>
+              <p style="font-size:12.5px; color:var(--faint); margin-top:2px;">Parked downloads stay visible — start one, start all, or clear the list.</p>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Downloads</div><p class="cd">Finished videos save themselves; anything that stalls stays parked here, never lost.</p></figcaption>
+        </figure>
+        <figure class="shot-card rv d1">
+          <div class="shot-win">
+            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Agent Mode</span></div>
+            <div class="shot-body">
+              <div class="chat-mock">Make the next scene — the teacher confronts the landlord, Veo Fast.</div>
+              <div class="proposal-mock">
+                <div class="pt">Proposal — 1 video, Veo Fast</div>
+                <p class="pc">This will cost <b>20 credits</b>. Nothing runs until you approve it.</p>
+                <div class="prop-btns"><span class="prop-approve">Approve</span><span class="prop-reject">Reject</span></div>
+                <p class="guard-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Within the expected cost for this model</p>
+              </div>
+            </div>
+          </div>
+          <figcaption class="shot-cap"><div class="ct">Agent Mode</div><p class="cd">The agent proposes first and shows the exact credit cost — you approve or reject before anything is spent.</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/compare.html"'>
+<section id="compare">
     <div class="wrap">
       <span class="kicker rv" style="color:#FFCE54">Compare</span>
       <h2 class="rv d1">Built for batches. <span class="grad">The others aren't.</span></h2>
@@ -1558,9 +1711,26 @@
       </div>
     </div>
   </section>
-
-  <!-- ================= HOW IT WORKS ================= -->
-  <section id="how">
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/how-it-works.html"'>
+<section id="how">
     <div class="wrap">
       <span class="kicker rv" style="color:#5ED6F2">How it works</span>
       <h2 class="rv d1">From prompts to a folder of videos, <span class="grad">in four steps</span></h2>
@@ -1572,137 +1742,61 @@
       </div>
     </div>
   </section>
-
-  <!-- ================= LIVE SAMPLES ================= -->
-  <section id="samples" class="page-sec">
+<section id="download">
     <div class="wrap">
-      <span class="kicker rv" style="color:#FFCE54">Live samples</span>
-      <h2 class="rv d1">Two live samples — <span class="grad">watch it, then try it</span></h2>
-      <p class="sec-sub rv d2">Sample A is the entry flow at the top of this page — splash, key portal over the blurred studio, Gmail key, unlock — looping on its own. Sample B below is in your hands: press Generate and watch three accounts produce three videos while the credits move exactly like they do in the app.</p>
-      <p class="rv d2" style="margin-top:14px;"><span class="live-tag"><i></i> Live sample — try it · Studio demo</span></p>
-
-      <div class="demo-shell rv d2" id="demo">
-        <div class="demo-top">
-          <span class="ttl">FlowStudio · Demo project</span>
-          <span class="credits-chip">Credits <b id="creditNum">200</b></span>
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
         </div>
-        <textarea class="demo-prompts" id="demoPrompts" aria-label="Demo prompts, one per line">A young boy polishes shoes outside a railway station, morning light, cinematic
-An old teacher opens a worn diary as rain starts over the village school
-A street vendor arranges marigolds at dawn, steam rising from his tea stall</textarea>
-        <div class="demo-actions">
-          <button class="btn-gen" id="genBtn" type="button">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.8v14.4L19 12z"/></svg>
-            Generate 3 videos
-          </button>
-          <button class="btn-reset" id="resetBtn" type="button">Reset demo</button>
-          <span class="demo-status" id="demoStatus">Ready — 3 prompts, 3 accounts, 21 credits planned.</span>
-        </div>
-        <div class="demo-tiles" id="demoTiles">
-          <div class="dtile" data-tile=''>
-            <div class="thumb" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div>
-            <p class="cap">A young boy polishes shoes outside a railway station…</p>
-            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
-            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#7C5CFF,#22C3E6)"></i></div>
-          </div>
-          <div class="dtile" data-tile=''>
-            <div class="thumb" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div>
-            <p class="cap">An old teacher opens a worn diary as rain starts…</p>
-            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
-            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#FF6B9D,#F5B83D)"></i></div>
-          </div>
-          <div class="dtile" data-tile=''>
-            <div class="thumb" style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div>
-            <p class="cap">A street vendor arranges marigolds at dawn…</p>
-            <span class="stat" data-stat='' style="color:#8E88B8">Idle</span>
-            <div class="bar"><i data-bar='' style="background:linear-gradient(90deg,#22C3E6,#3ED598)"></i></div>
-          </div>
-        </div>
-      </div>
-      <p class="mini-cap" style="margin-top:14px;">Demo only — no real generation happens here. In the app, the same flow runs on your own accounts.</p>
-    </div>
-  </section>
-
-  <!-- ================= SCREENSHOTS / SEE THE APP ================= -->
-  
-  <section id="screenshots" class="page-sec">
-    <div class="wrap">
-      <span class="kicker rv" style="color:#FFCE54">See the app</span>
-      <h2 class="rv d1">A look inside <span class="grad">FlowStudio</span></h2>
-      <p class="sec-sub rv d2">The real screens, in the app's own Midnight Gold design — from the locked entry portal to a finished, saved video.</p>
-      <div class="shots-grid">
-        <figure class="shot-card rv">
-          <div class="shot-win">
-            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Sign in</span></div>
-            <div class="shot-body">
-              <div class="mock-blur" aria-hidden="true"><div style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><div style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><div style="background:linear-gradient(120deg,#22C3E6,#3ED598)"></div><div style="background:linear-gradient(120deg,#F5B83D,#7C5CFF)"></div></div>
-              <div class="portal-mock">
-                <h4>Welcome to FlowStudio</h4>
-                <p class="ps">Sign in to unlock the studio</p>
-                <div class="g-btn"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.5h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8.2z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.6H2.1v2.9A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9z"/><path fill="#EA4335" d="M12 5.3c1.6 0 3.1.6 4.3 1.6l3.2-3.2A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.2 9.1 5.3 12 5.3z"/></svg> Continue with Google</div>
-                <div class="mock-field">you@example.com</div>
-                <div class="mock-field gold">FS-••••-••••-••••</div>
-                <div class="mock-activate">Activate FlowStudio</div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="shot-cap"><div class="ct">Sign in &amp; activate</div><p class="cd">The studio stays blurred and locked until your key is entered — one key, one PC.</p></figcaption>
-        </figure>
-        <figure class="shot-card rv d1">
-          <div class="shot-win">
-            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Studio</span></div>
-            <div class="shot-body">
-              <div class="studio-mock">
-                <div>
-                  <div class="acct"><div class="an">Account 1</div><span class="chip">42 credits</span></div>
-                  <div class="acct"><div class="an">Account 2</div><span class="chip">50 credits</span></div>
-                  <div class="acct"><div class="an">Account 3</div><span class="chip low">6 credits</span></div>
-                </div>
-                <div>
-                  <div class="prompt-mock">A boy polishes shoes at the station, morning light…<br/>The old teacher opens a worn diary…<br/>Rain over the village school roof…</div>
-                  <div class="gen-mock">Generate batch</div>
-                  <div class="mini-tiles">
-                    <div class="mini-tile"><div class="th" style="background:linear-gradient(120deg,#7C5CFF,#22C3E6)"></div><span class="sv"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
-                    <div class="mini-tile"><div class="th" style="background:linear-gradient(120deg,#FF6B9D,#F5B83D)"></div><span class="sv"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="shot-cap"><div class="ct">Studio</div><p class="cd">Accounts with live credit chips on the left, your batch of prompts in the middle, finished videos below.</p></figcaption>
-        </figure>
-        <figure class="shot-card rv">
-          <div class="shot-win">
-            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Downloads</span></div>
-            <div class="shot-body">
-              <div class="dl-row"><div><div class="fn">scene-01.mp4</div><div class="fs">720p · Saved to Downloads</div></div><span class="dl-saved"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Saved</span></div>
-              <div class="dl-row"><div style="flex:1;"><div class="fn">scene-02.mp4</div><div class="fs">Parked — waiting to download</div><div class="dl-bar"><i style="width:35%"></i></div></div><span class="dl-start">Start</span></div>
-              <div class="dl-row"><div style="flex:1;"><div class="fn">scene-03.mp4</div><div class="fs">Parked — waiting to download</div><div class="dl-bar"><i style="width:12%"></i></div></div><span class="dl-start">Start</span></div>
-              <p style="font-size:12.5px; color:var(--faint); margin-top:2px;">Parked downloads stay visible — start one, start all, or clear the list.</p>
-            </div>
-          </div>
-          <figcaption class="shot-cap"><div class="ct">Downloads</div><p class="cd">Finished videos save themselves; anything that stalls stays parked here, never lost.</p></figcaption>
-        </figure>
-        <figure class="shot-card rv d1">
-          <div class="shot-win">
-            <div class="shot-bar"><i style="background:#FF6B6B"></i><i style="background:#F5B83D"></i><i style="background:#3ED598"></i><span class="t">FlowStudio — Agent Mode</span></div>
-            <div class="shot-body">
-              <div class="chat-mock">Make the next scene — the teacher confronts the landlord, Veo Fast.</div>
-              <div class="proposal-mock">
-                <div class="pt">Proposal — 1 video, Veo Fast</div>
-                <p class="pc">This will cost <b>20 credits</b>. Nothing runs until you approve it.</p>
-                <div class="prop-btns"><span class="prop-approve">Approve</span><span class="prop-reject">Reject</span></div>
-                <p class="guard-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> Within the expected cost for this model</p>
-              </div>
-            </div>
-          </div>
-          <figcaption class="shot-cap"><div class="ct">Agent Mode</div><p class="cd">The agent proposes first and shows the exact credit cost — you approve or reject before anything is spent.</p></figcaption>
-        </figure>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
       </div>
     </div>
   </section>
-
-  <!-- ================= PRICING ================= -->
-  <section id="pricing">
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/tutorials.html"'>
+<section id="tutorials" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FF8FB5">Tutorials</span>
+      <h2 class="rv d1">Learn it in <span class="grad">one sitting</span></h2>
+      <p class="sec-sub rv d2">Seven short guides with the real steps — open any guide and follow along in the app.</p>
+      <div class="tut-acc">
+        <div class="faq rv"><button type="button" aria-expanded="false">1 · Download &amp; install<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Press the Download button on this page and save FlowStudio_Setup.exe (about 74 MB).</li><li>Open the file from your Downloads folder and follow the installer — it takes under a minute.</li><li>If Windows shows a safety prompt, choose “More info” and then “Run anyway” — the setup is the official one from this page.</li><li>FlowStudio opens on its animated splash, then shows the sign-in portal over the blurred studio.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">2 · Activate with your key<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Create your account in the portal — your name, email and a password (or continue with Google).</li><li>Your key arrives by email. With Google sign-in, your mail opens for you so the key is right there.</li><li>Copy the key (it looks like FS-XXXX-XXXX-XXXX), paste it into the portal and press Activate.</li><li>The blur lifts and the studio unlocks. Without a valid key the app stays locked — nothing inside can be used.</li><li>One key works on one PC. If you change or format your PC, message support on WhatsApp for a reset.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">3 · Add Google accounts<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Open the Accounts area and press Add account.</li><li>Sign in with that Google account once — FlowStudio keeps it ready for generation.</li><li>Repeat for every account you want — there is no limit. Add as many as you like: every account adds its own daily free credits, so 100 accounts means 100× the credits of one.</li><li>Credits are checked automatically, so you always see which accounts are ready and which are dry.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">4 · Your first video<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Write one clear prompt: subject, place, action and mood in a single line.</li><li>Pick the model (Omni Flash at 7 credits is the friendly default) and press Generate.</li><li>Watch the tile fill up — the progress line only runs on the video that is actually generating.</li><li>When it finishes, the video saves itself into your Downloads folder. Press play and check it.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">5 · Batch generation<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Paste all your scene prompts at once — one prompt per line, the whole batch in a single run.</li><li>The planner divides the batch by credit capacity first: about 7 credits per video, up to 7 videos per account.</li><li>A browser only opens for an account that actually has work — no idle windows.</li><li>Accounts generate in parallel and every finished video is matched to its own prompt and saved.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">6 · Agent Mode<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Open Agent Mode and describe the batch you want in one message.</li><li>The agent proposes the generations with one combined credit quote.</li><li>The guard checks the quote against the expected cost for your model — at or below, it proceeds; above, it is rejected.</li><li>If a scene needs a fix, the repair happens in the same conversation and comes back as a fresh proposal.</li></ol></div></div>
+        <div class="faq rv"><button type="button" aria-expanded="false">7 · Downloads &amp; parked videos<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Finished videos save into your Downloads folder, enhanced one step up where possible (for example 360p to 720p).</li><li>Every file is verified by its content — never trust the filename order alone.</li><li>If a download stalls, it stays parked and visible in the app instead of disappearing.</li><li>Restart one parked download, restart all of them, or clear the list whenever you are ready.</li></ol></div></div>
+      </div>
+    </div>
+  </section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/pricing.html"'>
+<section id="pricing">
     <div class="wrap">
       <span class="kicker rv" style="color:#6FE3B4">Pricing</span>
       <h2 class="rv d1">Start free. <span class="grad">Stay because it saves hours.</span></h2>
@@ -1749,9 +1843,37 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       </div>
     </div>
   </section>
-
-  <!-- ================= WHAT'S NEW ================= -->
-  <section id="whatsnew" class="page-sec">
+<section id="requirements" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#5ED6F2">System requirements</span>
+      <h2 class="rv d1">What your PC <span class="grad">needs</span></h2>
+      <p class="sec-sub rv d2">A quick check before you install, so the first run goes smoothly.</p>
+      <div class="req-grid">
+        <div class="req-card rv"><h3>Your computer</h3><ul><li>Windows 10 or Windows 11 (64-bit)</li><li>8 GB RAM — 16 GB recommended for big parallel batches</li><li>2 GB free disk space for the app, plus room for your videos</li><li>A screen that fits the studio comfortably at its default size</li></ul></div>
+        <div class="req-card rv d1"><h3>Connection &amp; accounts</h3><ul><li>Internet for sign-in, first activation and video generation</li><li>At least one Google account that can use Flow</li><li>Your activation key from your email — one key, one PC</li><li>Downloads land in your standard Downloads folder</li></ul></div>
+      </div>
+    </div>
+  </section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/whats-new.html"'>
+<section id="whatsnew" class="page-sec">
     <div class="wrap">
       <span class="kicker rv" style="color:#A78BFF">What's new</span>
       <h2 class="rv d1">Changelog — <span class="grad">every version, in the open</span></h2>
@@ -1765,69 +1887,26 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       </div>
     </div>
   </section>
-
-  <!-- ================= SYSTEM REQUIREMENTS ================= -->
-  <section id="requirements" class="page-sec">
+<section id="download">
     <div class="wrap">
-      <span class="kicker rv" style="color:#5ED6F2">System requirements</span>
-      <h2 class="rv d1">What your PC <span class="grad">needs</span></h2>
-      <p class="sec-sub rv d2">A quick check before you install, so the first run goes smoothly.</p>
-      <div class="req-grid">
-        <div class="req-card rv"><h3>Your computer</h3><ul><li>Windows 10 or Windows 11 (64-bit)</li><li>8 GB RAM — 16 GB recommended for big parallel batches</li><li>2 GB free disk space for the app, plus room for your videos</li><li>A screen that fits the studio comfortably at its default size</li></ul></div>
-        <div class="req-card rv d1"><h3>Connection &amp; accounts</h3><ul><li>Internet for sign-in, first activation and video generation</li><li>At least one Google account that can use Flow</li><li>Your activation key from your email — one key, one PC</li><li>Downloads land in your standard Downloads folder</li></ul></div>
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
       </div>
     </div>
   </section>
-
-  <!-- ================= TUTORIALS ================= -->
-  <section id="tutorials" class="page-sec">
-    <div class="wrap">
-      <span class="kicker rv" style="color:#FF8FB5">Tutorials</span>
-      <h2 class="rv d1">Learn it in <span class="grad">one sitting</span></h2>
-      <p class="sec-sub rv d2">Seven short guides with the real steps — open any guide and follow along in the app.</p>
-      <div class="tut-acc">
-        <div class="faq rv"><button type="button" aria-expanded="false">1 · Download &amp; install<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Press the Download button on this page and save FlowStudio_Setup.exe (about 74 MB).</li><li>Open the file from your Downloads folder and follow the installer — it takes under a minute.</li><li>If Windows shows a safety prompt, choose “More info” and then “Run anyway” — the setup is the official one from this page.</li><li>FlowStudio opens on its animated splash, then shows the sign-in portal over the blurred studio.</li></ol></div></div>
-        <div class="faq rv"><button type="button" aria-expanded="false">2 · Activate with your key<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Create your account in the portal — your name, email and a password (or continue with Google).</li><li>Your key arrives by email. With Google sign-in, your mail opens for you so the key is right there.</li><li>Copy the key (it looks like FS-XXXX-XXXX-XXXX), paste it into the portal and press Activate.</li><li>The blur lifts and the studio unlocks. Without a valid key the app stays locked — nothing inside can be used.</li><li>One key works on one PC. If you change or format your PC, message support on WhatsApp for a reset.</li></ol></div></div>
-        <div class="faq rv"><button type="button" aria-expanded="false">3 · Add Google accounts<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Open the Accounts area and press Add account.</li><li>Sign in with that Google account once — FlowStudio keeps it ready for generation.</li><li>Repeat for every account you want — there is no limit. Add as many as you like: every account adds its own daily free credits, so 100 accounts means 100× the credits of one.</li><li>Credits are checked automatically, so you always see which accounts are ready and which are dry.</li></ol></div></div>
-        <div class="faq rv"><button type="button" aria-expanded="false">4 · Your first video<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Write one clear prompt: subject, place, action and mood in a single line.</li><li>Pick the model (Omni Flash at 7 credits is the friendly default) and press Generate.</li><li>Watch the tile fill up — the progress line only runs on the video that is actually generating.</li><li>When it finishes, the video saves itself into your Downloads folder. Press play and check it.</li></ol></div></div>
-        <div class="faq rv"><button type="button" aria-expanded="false">5 · Batch generation<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Paste all your scene prompts at once — one prompt per line, the whole batch in a single run.</li><li>The planner divides the batch by credit capacity first: about 7 credits per video, up to 7 videos per account.</li><li>A browser only opens for an account that actually has work — no idle windows.</li><li>Accounts generate in parallel and every finished video is matched to its own prompt and saved.</li></ol></div></div>
-        <div class="faq rv"><button type="button" aria-expanded="false">6 · Agent Mode<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Open Agent Mode and describe the batch you want in one message.</li><li>The agent proposes the generations with one combined credit quote.</li><li>The guard checks the quote against the expected cost for your model — at or below, it proceeds; above, it is rejected.</li><li>If a scene needs a fix, the repair happens in the same conversation and comes back as a fresh proposal.</li></ol></div></div>
-        <div class="faq rv"><button type="button" aria-expanded="false">7 · Downloads &amp; parked videos<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="ans"><ol><li>Finished videos save into your Downloads folder, enhanced one step up where possible (for example 360p to 720p).</li><li>Every file is verified by its content — never trust the filename order alone.</li><li>If a download stalls, it stays parked and visible in the app instead of disappearing.</li><li>Restart one parked download, restart all of them, or clear the list whenever you are ready.</li></ol></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SUPPORT ================= -->
-  <section id="support" class="page-sec">
-    <div class="wrap">
-      <span class="kicker rv" style="color:#6FE3B4">Support</span>
-      <h2 class="rv d1">Stuck somewhere? <span class="grad">Talk to a human</span></h2>
-      <p class="sec-sub rv d2">Fastest reply on WhatsApp — most questions get an answer the same day. Send a screenshot of where you are stuck and you will get the exact next step, not a generic reply.</p>
-      <div class="rv d2" style="margin-top:26px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
-        <a class="wa-link" style="margin-left:0;" href="https://wa.me/918198966902" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
-          Chat on WhatsApp
-        </a>
-        <a class="btn-ghost" href="#faq">Read the FAQ first</a>
-      </div>
-      <p class="rv d3" style="color:var(--faint); font-size:14.5px; margin-top:16px;">Support covers activation, key resets after a PC change, account setup and download problems. There is no support email — WhatsApp is the one channel, so nothing gets lost.</p>
-    </div>
-  </section>
-
-  <!-- ================= PRIVACY &amp; TERMS ================= -->
-  <section id="privacy" class="page-sec">
-    <div class="wrap">
-      <span class="kicker rv" style="color:#FFCE54">Privacy &amp; terms</span>
-      <h2 class="rv d1">Plain words, <span class="grad">no fine-print tricks</span></h2>
-      <div class="legal-grid">
-        <div class="legal-card rv"><h3>Privacy — your accounts stay yours</h3><p>Your Google accounts sign in on your own PC and stay there. FlowStudio does not upload your account passwords anywhere, and your prompts and videos are yours — they are generated on your accounts and saved on your computer. We never sell your data. The only things the service itself handles are your sign-up name and email, and the key issued to you, so activation and support can work.</p></div>
-        <div class="legal-card rv d1"><h3>Terms — the short version</h3><p>One key activates on one PC; sharing a key does not extend it, and a key can be reset for a genuine PC change through support. The free trial runs 7 days with full features. Paid plans apply only when they open — until then the app is free. You are responsible for the videos you create and for using your own accounts within the video service's own rules.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FAQ ================= -->
-  <section id="faq">
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/faq.html"'>
+<section id="faq">
     <div class="wrap">
       <span class="kicker rv" style="color:#5ED6F2">FAQ</span>
       <h2 class="rv d1">Questions, <span class="grad">answered straight</span></h2>
@@ -1856,9 +1935,7 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       </div>
     </div>
   </section>
-
-  <!-- ================= DOWNLOAD ================= -->
-  <section id="download">
+<section id="download">
     <div class="wrap">
       <div class="dl-panel rv">
         <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
@@ -1875,11 +1952,95 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       </div>
     </div>
   </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/support.html"'>
+<section id="support" class="page-sec">
+    <div class="wrap">
+      <span class="kicker rv" style="color:#6FE3B4">Support</span>
+      <h2 class="rv d1">Stuck somewhere? <span class="grad">Talk to a human</span></h2>
+      <p class="sec-sub rv d2">Fastest reply on WhatsApp — most questions get an answer the same day. Send a screenshot of where you are stuck and you will get the exact next step, not a generic reply.</p>
+      <div class="rv d2" style="margin-top:26px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+        <a class="wa-link" style="margin-left:0;" href="https://wa.me/918198966902" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a class="btn-ghost" href="https://flowstudioapp.blogspot.com/p/faq.html">Read the FAQ first</a>
+      </div>
+      <p class="rv d3" style="color:var(--faint); font-size:14.5px; margin-top:16px;">Support covers activation, key resets after a PC change, account setup and download problems. There is no support email — WhatsApp is the one channel, so nothing gets lost.</p>
+    </div>
+  </section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/privacy-policy.html"'>
+<section id="privacy" class="page-sec">
+    
+  </section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
+<b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/terms-of-use.html"'>
+<section id="privacy" class="page-sec"><div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">Privacy &amp; terms</span>
+      <h2 class="rv d1">Plain words, <span class="grad">no fine-print tricks</span></h2>
+      <div class="legal-grid">
+        <div class="legal-card rv"><h3>Privacy — your accounts stay yours</h3><p>Your Google accounts sign in on your own PC and stay there. FlowStudio does not upload your account passwords anywhere, and your prompts and videos are yours — they are generated on your accounts and saved on your computer. We never sell your data. The only things the service itself handles are your sign-up name and email, and the key issued to you, so activation and support can work.</p></div>
+        <div class="legal-card rv d1"><h3>Terms — the short version</h3><p>One key activates on one PC; sharing a key does not extend it, and a key can be reset for a genuine PC change through support. The free trial runs 7 days with full features. Paid plans apply only when they open — until then the app is free. You are responsible for the videos you create and for using your own accounts within the video service's own rules.</p></div>
+      </div>
+    </div></section>
+<section id="download">
+    <div class="wrap">
+      <div class="dl-panel rv">
+        <svg style="margin:0 auto;" width="64" height="64" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
+        <h2>Your next batch of videos<br/>is one download away</h2>
+        <span class="ver">FlowStudio v1.0.9 for Windows · Setup ≈ 74 MB</span>
+        <div class="cta-row">
+          <a class="btn-gold" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
+            Download FlowStudio — Free 7-day trial
+          </a>
+        </div>
+        <p class="sys">Windows 10 / 11 · Internet needed for activation</p>
+        <p class="sys" style="margin-top:10px;">Free 7-day trial · No card needed · Activate with the key from your email</p>
+      </div>
+    </div>
+  </section>
+</b:if>
 </main>
 
 <footer>
   <div class="wrap foot-in">
-    <a class="brand" href="#top" aria-label="FlowStudio home">
+    <a class="brand" href="https://flowstudioapp.blogspot.com/" aria-label="FlowStudio home">
       <svg class="logo-mark" width="32" height="32" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="#191430"/><path d="M33.5 8.2l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#F5B83D"/><circle cx="14.5" cy="12" r="1.6" fill="#F5B83D" opacity=".55"/><circle cx="19" cy="9.8" r="1.6" fill="#F5B83D" opacity=".7"/><circle cx="24" cy="9" r="1.6" fill="#F5B83D" opacity=".85"/><circle cx="29" cy="9.6" r="1.6" fill="#F5B83D"/><path d="M19 17.5v13l11-6.5z" fill="#F5B83D"/></svg>
       <span>Flow<span class="grad">Studio</span></span>
     </a>
@@ -1888,7 +2049,7 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
       WhatsApp support
     </a>
-    <div class="copy">
+    <nav class="foot-links"><a href="https://flowstudioapp.blogspot.com/p/features.html">Features</a><a href="https://flowstudioapp.blogspot.com/p/compare.html">Compare</a><a href="https://flowstudioapp.blogspot.com/p/how-it-works.html">How It Works</a><a href="https://flowstudioapp.blogspot.com/p/tutorials.html">Tutorials</a><a href="https://flowstudioapp.blogspot.com/p/pricing.html">Pricing</a><a href="https://flowstudioapp.blogspot.com/p/whats-new.html">What's New</a><a href="https://flowstudioapp.blogspot.com/p/faq.html">FAQ</a><a href="https://flowstudioapp.blogspot.com/p/support.html">Support</a><a href="https://flowstudioapp.blogspot.com/p/privacy-policy.html">Privacy Policy</a><a href="https://flowstudioapp.blogspot.com/p/terms-of-use.html">Terms of Use</a></nav><div class="copy">
       <span>© <span id="year">2026</span> FlowStudio. All rights reserved.</span>
       <span>FlowStudio — multi-account AI video generation for Windows.</span>
     </div>
@@ -2289,6 +2450,12 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
 })();
 //]]>
 </script>
+<script>
+//<![CDATA[
+(function(){var p=location.pathname.replace(/\/+$/,'');if(p=='')p='/';var links=document.querySelectorAll('.nav-links a');for(var i=0;i<links.length;i++){try{var ap=new URL(links[i].href).pathname.replace(/\/+$/,'');if(ap=='')ap='/';if(ap===p)links[i].classList.add('active');}catch(e){}}})();
+//]]>
+</script>
+
 <b:section id='fs-main' maxwidgets='1' name='Main' showaddelement='no'/>
 </body>
 </html>
