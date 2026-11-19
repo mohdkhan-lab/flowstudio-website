@@ -791,6 +791,95 @@
     html[data-theme="light"] .nav-links a.active{ background:rgba(245,184,61,.16); }
   }
 
+  /* ===== Mobile pass — phones & small tablets only. Desktop (>1020px) is untouched. ===== */
+
+  /* tablet: floating stat card stacks under the hero window instead of overlapping it */
+  @media (max-width:900px){
+    .float-card{ position:static; margin-top:14px; display:inline-block; }
+  }
+
+  @media (max-width:680px){
+    .wrap{ padding:0 16px; }
+    section{ scroll-margin-top:136px; }
+
+    /* header: one tidy row (logo · theme · menu), gold Download as a full-width bar under it */
+    .nav-in{ gap:10px; padding:10px 0 12px; }
+    .brand{ order:0; font-size:19px; }
+    .theme-toggle{ order:1; margin-left:auto; width:44px; height:44px; min-height:44px; }
+    .menu-btn{ order:2; margin-left:0; width:44px; height:44px; }
+    .nav-cta{
+      order:3; flex:1 1 100%; width:100%; margin-left:0;
+      justify-content:center; text-align:center;
+      padding:12px 18px; min-height:48px; font-size:15px;
+    }
+
+    /* hero: fluid type, full-width stacked buttons */
+    .hero{ padding:36px 0 24px; }
+    h1{ font-size:clamp(35px, 10.5vw, 46px); }
+    .hero-sub{ font-size:16.5px; margin-top:14px; }
+    .pill{ font-size:12.5px; max-width:100%; }
+    .hero-cta{ flex-direction:column; align-items:stretch; gap:12px; margin-top:24px; }
+    .hero-cta .btn-gold, .hero-cta .btn-ghost{ width:100%; }
+    .hero-stats{ gap:20px 26px; margin-top:28px; }
+    .marquee{ margin-top:40px; }
+    .marquee span{ font-size:14px; padding:0 16px; }
+
+    /* hero demo window: tighter chrome, scenes keep room to breathe */
+    .mini-shell{ padding:10px; border-radius:20px; }
+    .mini-bar .t{ font-size:12px; }
+    .scene{ padding:16px; }
+    .portal-card{ padding:16px; margin-top:8px; }
+    .saved-row{ margin-top:12px; }
+
+    /* stats: keep the 2x2 wrap, tighten the cards */
+    .stats{ gap:12px; margin-top:32px; }
+    .stat{ padding:18px 16px; }
+    .stat .lbl{ font-size:13.5px; }
+
+    /* studio demo: full-width tappable actions, no iOS focus zoom */
+    .demo-shell{ padding:16px; border-radius:20px; }
+    .demo-top .ttl{ font-size:17px; }
+    .demo-prompts{ font-size:16px; }
+    .demo-actions{ flex-direction:column; align-items:stretch; gap:10px; }
+    .btn-gen, .btn-reset{ width:100%; min-height:52px; }
+    .demo-status{ text-align:center; }
+
+    /* screenshots: calmer padding inside the app windows */
+    .shot-card{ padding:12px; }
+    .shot-body{ padding:12px; }
+
+    /* download panel + footer stack cleanly */
+    .dl-panel .cta-row .btn-gold{ width:100%; }
+    .foot-in{ gap:14px; }
+    .foot-in .wa-link{ margin-left:0; width:100%; }
+    .copy{ flex-direction:column; gap:4px; }
+
+    /* floating WhatsApp: smaller, lifted off the edge, respects the home-bar area */
+    .wa-float{
+      width:52px; height:52px; right:14px;
+      bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  @media (max-width:560px){
+    /* the one wide stat word ("Unlimited" — the only .num with an inline size) must never clip its card */
+    .stats .num[style]{ font-size:22px !important; }
+
+    /* models & credits: smaller type + tight cells so the table fits, no sideways scroll */
+    .models-table{ margin-top:20px; }
+    .models-table th, .models-table td{ padding:10px; font-size:13.5px; line-height:1.45; }
+
+    /* studio screenshot mock: accounts become a 3-up row above the prompt box */
+    .studio-mock{ grid-template-columns:1fr; }
+    .studio-mock > div:first-child{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .studio-mock .acct{ margin-bottom:0; padding:8px; }
+    .studio-mock .acct .an{ font-size:11.5px; }
+
+    .price .amt{ font-size:38px; }
+    .change{ padding:18px; }
+    .faq button{ font-size:16px; padding:16px; }
+    .dl-panel h2{ font-size:27px; }
+  }
 ]]></b:skin>
 </head>
 <body>
