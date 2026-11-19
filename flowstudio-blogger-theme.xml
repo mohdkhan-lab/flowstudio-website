@@ -1087,7 +1087,8 @@
       <table class="models-table">
         <thead><tr><th>Model</th><th>Credits per video</th><th>Best for</th></tr></thead>
         <tbody>
-          <tr><td><strong>Omni Flash</strong></td><td>7 credits</td><td>Everyday batches — the default workhorse</td></tr>
+          <tr><td><strong>Omni Flash 1.2</strong></td><td>12 credits</td><td>The newest Omni — sharper results, clips up to 15s</td></tr>
+          <tr><td><strong>Omni Flash 1.1</strong></td><td>7 credits</td><td>Everyday batches — the default workhorse</td></tr>
           <tr><td><strong>Veo Lite</strong></td><td>10 credits</td><td>Quick drafts and tests</td></tr>
           <tr><td><strong>Veo Fast</strong></td><td>20 credits</td><td>Sharper results, still fast</td></tr>
           <tr><td><strong>Veo Quality</strong></td><td>100 credits</td><td>Hero scenes where quality matters most</td></tr>
