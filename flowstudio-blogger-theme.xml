@@ -542,8 +542,8 @@
     .cmp-demo-sub{ color:var(--muted); font-size:15px; margin-top:6px; max-width:46em; }
     .cmp-controls{ display:flex; gap:18px 26px; flex-wrap:wrap; margin-top:20px; }
     .cmp-ctl-lbl{ font-size:12.5px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--faint); margin-bottom:8px; }
-    .seg{ display:inline-flex; gap:4px; background:var(--panel-grad-soft); border:1px solid var(--line); border-radius:999px; padding:4px; flex-wrap:wrap; max-width:100%; }
-    .seg button{ border:none; background:transparent; color:var(--muted); font-weight:700; font-size:15px; padding:10px 18px; min-height:46px; border-radius:999px; transition:background .25s, color .25s, box-shadow .25s; }
+    .seg{ display:inline-flex; gap:4px; background:var(--panel-grad-soft); border:1px solid var(--line); border-radius:14px; padding:4px; flex-wrap:wrap; max-width:100%; }
+    .seg button{ border:none; background:transparent; color:var(--muted); font-weight:700; font-size:15px; padding:10px 18px; min-height:46px; border-radius:10px; transition:background .25s, color .25s, box-shadow .25s; }
     .seg button:hover{ color:var(--ink); }
     .seg button.on{ background:var(--gold-grad); color:#241A02; box-shadow:0 6px 16px rgba(245,184,61,.35); }
     .cmp-tracks{ margin-top:26px; display:flex; flex-direction:column; gap:22px; }
@@ -632,7 +632,7 @@
   /* ===== Reference design, dark Midnight Gold conversion =====
      Warm ivory grid-paper site -> deep #0B0B10 + faint grid, rust -> app gold,
      plain-text nav, two pill button shapes only, serif-italic gold accents. */
-  :root{ --font-s:"Lora", Georgia, serif; --btn-radius:999px; }
+  :root{ --font-s:"Lora", Georgia, serif; --btn-radius:14px; }
   body{
     background-color:#0B0B10;
     background-image:
@@ -650,34 +650,45 @@
   .nav-in{ position:relative; }
   .brand .grad{ font-family:var(--font-s); font-style:italic; font-weight:600; background:none; -webkit-background-clip:initial; background-clip:initial; color:#F5B83D; -webkit-text-fill-color:#F5B83D; }
   .nav-links{
-    background:transparent; border:none; box-shadow:none; border-radius:0; padding:0; gap:26px;
+    background:#14141C; border:1px solid rgba(255,255,255,.12); box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 26px rgba(0,0,0,.28); border-radius:14px; padding:4px; gap:2px;
     margin-left:auto; overflow:visible;
   }
-  .nav-links a{ padding:8px 2px; border-radius:0; min-height:40px; font-size:15px; font-weight:500; color:#C9C4B4; }
-  .nav-links a:hover{ color:#fff; }
-  .nav-links a.active{ color:#FFCE54; font-weight:600; box-shadow:inset 0 -2px 0 #F5B83D; }
-  .nav-cta{ border-radius:999px; padding:11px 22px; min-height:46px; box-shadow:0 8px 22px rgba(245,184,61,.28); }
+  .tab-indicator{ display:none !important; }
+  .nav-links a{ padding:8px 11px; border-radius:10px; min-height:40px; font-size:14px; font-weight:600; color:#C9C4B4; transition:background .22s ease, color .22s ease, transform .15s ease; }
+  .nav-links a:hover{ color:#fff; background:rgba(255,255,255,.07); }
+  .nav-links a:active{ transform:scale(.97); }
+  .nav-links a.active{ color:#241A02; font-weight:700; background:linear-gradient(120deg,#F2B544,#DD941F); box-shadow:0 4px 14px rgba(245,184,61,.35); }
+  .nav-cta{ border-radius:14px; padding:11px 20px; min-height:46px; box-shadow:0 8px 22px rgba(245,184,61,.28); }
   .menu-btn{
-    display:none; margin-left:10px; width:46px; height:46px; border-radius:999px; flex:none;
+    display:none; margin-left:10px; width:46px; height:46px; border-radius:12px; flex:none;
     background:#14141C; border:1px solid rgba(255,255,255,.16); color:#F7F3E8;
     align-items:center; justify-content:center;
+    transition:background .22s ease, border-color .22s ease, transform .15s ease;
   }
+  .menu-btn:hover{ border-color:rgba(245,184,61,.6); background:#1B1B24; }
+  .menu-btn:active{ transform:scale(.94); }
+  .menu-btn[aria-expanded="true"]{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; }
+  @keyframes navDrop{ from{ opacity:0; transform:translateY(-8px) scale(.985); } to{ opacity:1; transform:none; } }
+  @keyframes navLinkIn{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
 
-  /* buttons — only two shapes: solid gold pill / dark hairline pill */
-  .btn-gold,.btn-gen,.price.best .pcta,.mock-activate,.gen-mock{ border-radius:999px !important; }
-  .btn-ghost,.btn-reset,.price .pcta,.tut,.faq button .fx{ border-radius:999px; }
+  /* buttons — app style: rounded rectangles, softly curved corners (14px), never full pills */
+  .btn-gold,.btn-gen,.price.best .pcta,.mock-activate,.gen-mock{ border-radius:14px !important; }
+  .btn-ghost,.btn-reset,.price .pcta{ border-radius:14px; }
+  .tut{ border-radius:16px; }
+  .faq button .fx{ border-radius:9px; }
   .btn-ghost,.btn-reset,.price .pcta{
     background:#14141C; border:1px solid rgba(255,255,255,.18); color:#F7F3E8; box-shadow:none;
   }
   .price.best .pcta{ background:var(--gold-grad); color:#241A02; border:none; }
   .btn-ghost:hover,.btn-reset:hover,.price .pcta:hover{ border-color:rgba(245,184,61,.6); color:#FFCE54; box-shadow:none; }
   .btn-gold::after,.nav-cta::after,.btn-gen::after,.price.best .pcta::after{ display:none; }
-  .wa-link{ border-radius:999px; }
-  .dl-start,.prop-approve,.prop-reject{ border-radius:999px !important; }
+  .wa-link{ border-radius:14px; }
+  .dl-start{ border-radius:9px !important; }
+  .prop-approve,.prop-reject{ border-radius:10px !important; }
 
   /* hero — badge, serif/sans two-line headline, stat row */
-  .pill{ background:#14141C; border:1px solid rgba(255,255,255,.12); box-shadow:none; border-radius:999px; padding:5px 14px 5px 5px; gap:10px; }
-  .pill-chip{ font-family:var(--font-d); font-size:11px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#241A02; background:var(--gold-grad); padding:5px 10px; border-radius:999px; }
+  .pill{ background:#14141C; border:1px solid rgba(255,255,255,.12); box-shadow:none; border-radius:12px; padding:5px 14px 5px 5px; gap:10px; }
+  .pill-chip{ font-family:var(--font-d); font-size:11px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#241A02; background:var(--gold-grad); padding:5px 10px; border-radius:8px; }
   h1{ letter-spacing:-1px; }
   h1 .h-serif{ display:block; font-family:var(--font-s); font-style:italic; font-weight:600; color:#F5B83D; letter-spacing:-.5px; }
   h1 .h-sans{ display:block; color:#F7F3E8; }
@@ -721,14 +732,20 @@
     .menu-btn{ display:inline-flex; }
     .nav-cta{ margin-left:auto; }
     .nav-links{
-      display:none; position:absolute; top:calc(100% + 8px); left:0; right:0; z-index:65;
-      flex-direction:column; align-items:stretch; gap:2px;
-      background:#13131B; border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:10px;
+      display:none; position:absolute; top:calc(100% + 10px); left:0; right:0; z-index:65;
+      flex-direction:column; align-items:stretch; gap:4px;
+      background:#13131B; border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:8px;
       box-shadow:0 24px 48px rgba(0,0,0,.5);
     }
-    .nav-links.open{ display:flex; }
-    .nav-links a{ padding:11px 12px; min-height:44px; border-radius:10px; }
-    .nav-links a.active{ box-shadow:none; background:rgba(245,184,61,.1); }
+    .nav-links.open{ display:flex; animation:navDrop .3s cubic-bezier(.2,.8,.25,1); transform-origin:top center; }
+    .nav-links.open a{ animation:navLinkIn .34s cubic-bezier(.2,.8,.25,1) both; }
+    .nav-links.open a:nth-child(2){ animation-delay:.03s; } .nav-links.open a:nth-child(3){ animation-delay:.06s; }
+    .nav-links.open a:nth-child(4){ animation-delay:.09s; } .nav-links.open a:nth-child(5){ animation-delay:.12s; }
+    .nav-links.open a:nth-child(6){ animation-delay:.15s; } .nav-links.open a:nth-child(7){ animation-delay:.18s; }
+    .nav-links.open a:nth-child(8){ animation-delay:.21s; }
+    .nav-links a{ padding:12px 14px; min-height:48px; border-radius:10px; font-size:15px; }
+    .nav-links a:hover{ background:rgba(255,255,255,.07); }
+    .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); color:#241A02; box-shadow:0 4px 14px rgba(245,184,61,.3); }
     .float-card{ left:8px; bottom:26px; padding:13px 18px; }
     .fc-num{ font-size:28px; }
   }
@@ -744,7 +761,7 @@
 
   .theme-toggle{
     flex:none; display:inline-flex; align-items:center; justify-content:center;
-    width:46px; height:46px; min-height:46px; padding:0; border-radius:999px;
+    width:46px; height:46px; min-height:46px; padding:0; border-radius:12px;
     background:#14141C; border:1px solid rgba(255,255,255,.16); color:#FFCE54;
   }
   .theme-toggle:hover{ border-color:rgba(245,184,61,.65); }
@@ -774,7 +791,9 @@
   html[data-theme="light"] header.nav{ background:rgba(250,246,239,.92); border-bottom:1px solid #E8E0D0; }
   html[data-theme="light"] .nav-links a{ color:#55504A; }
   html[data-theme="light"] .nav-links a:hover{ color:#1C1917; }
-  html[data-theme="light"] .nav-links a.active{ color:#8A5F0A; box-shadow:inset 0 -2px 0 #D99A16; }
+  html[data-theme="light"] .nav-links{ background:#FFFFFF; border-color:#E0D5BC; }
+  html[data-theme="light"] .nav-links a:hover{ background:#F7F0DD; color:#1C1917; }
+  html[data-theme="light"] .nav-links a.active{ color:#241A02; background:linear-gradient(120deg,#F2B544,#DD941F); box-shadow:0 4px 14px rgba(184,134,11,.3); }
   html[data-theme="light"] .menu-btn{ background:#FFFFFF; border-color:#E0D5BC; color:#1C1917; }
   html[data-theme="light"] .brand .grad{ color:#B57E0E; -webkit-text-fill-color:#B57E0E; }
 
@@ -838,7 +857,7 @@
 
   @media (max-width:1020px){
     html[data-theme="light"] .nav-links{ background:#FFFFFF; border-color:#E8E0D0; box-shadow:0 24px 48px rgba(122,94,32,.18); }
-    html[data-theme="light"] .nav-links a.active{ background:rgba(245,184,61,.16); }
+    html[data-theme="light"] .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); color:#241A02; }
   }
   /* ===== Mobile pass — phones & small tablets only. Desktop (>1020px) is untouched. ===== */
 
@@ -941,6 +960,231 @@
     .faq button{ font-size:16px; padding:16px; }
     .dl-panel h2{ font-size:27px; }
   }
+  /* ===== App-style finish: softly curved buttons everywhere, no full-pill shapes ===== */
+  .btn-gold,.btn-ghost,.btn-gen,.btn-reset,.nav-cta,.wa-link,.price .pcta{ border-radius:14px; }
+  .btn-gold:active,.btn-gen:active,.nav-cta:active,.btn-ghost:active,.btn-reset:active{ transform:scale(.98); }
+  .credits-chip{ border-radius:10px; }
+  .live-tag{ border-radius:8px; }
+  .dl-panel .ver{ border-radius:10px; }
+  .best-tag{ border-radius:8px; }
+  .chip{ border-radius:6px; }
+  #pricing .wrap > p[style]{ border-radius:10px !important; }
+  .step .n{ border-radius:12px; }
+  .tut .play{ border-radius:14px; }
+  .wa-float{ border-radius:16px; }
+  .theme-toggle:active{ transform:scale(.94); }
+  .theme-toggle{ transition:background .22s ease, border-color .22s ease, transform .15s ease; }
+  @media (prefers-reduced-motion: reduce){
+    .nav-links.open,.nav-links.open a{ animation:none !important; }
+    .btn-gold:active,.btn-gen:active,.nav-cta:active,.btn-ghost:active,.btn-reset:active,.theme-toggle:active,.menu-btn:active,.nav-links a:active{ transform:none !important; }
+  }
+  /* ===== Mobile & tablet menu — the opened panel is a floating card, not a full-width slab.
+     Everything here is scoped to <=1020px (plus the menu button's open/close icon swap;
+     that button is hidden on desktop). Desktop rendering is untouched. ===== */
+  .menu-btn .ic-close{ display:none; }
+  .menu-btn[aria-expanded="true"] .ic-burger{ display:none; }
+  .menu-btn[aria-expanded="true"] .ic-close{ display:block; }
+
+  @keyframes menuDrop{ from{ opacity:0; transform:translateY(-10px) scale(.97); } to{ opacity:1; transform:none; } }
+
+  @media (max-width:1020px){
+    .nav-links{
+      top:calc(100% + 12px);
+      padding:10px; gap:3px; border-radius:20px;
+      background:linear-gradient(180deg,#1A1A24 0%,#12121A 100%);
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:0 30px 60px rgba(0,0,0,.55), 0 8px 22px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+      max-height:calc(100vh - 158px); max-height:calc(100dvh - 158px);
+      overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; scrollbar-width:thin;
+    }
+    .nav-links.open{ animation:menuDrop .32s cubic-bezier(.2,.8,.25,1); transform-origin:top right; }
+    .nav-links a{
+      display:flex; align-items:center;
+      min-height:52px; padding:13px 16px; border-radius:13px;
+      font-size:15.5px; font-weight:600;
+    }
+    /* quiet chevron on every row — gold and stronger on the current page */
+    .nav-links a::after{
+      content:""; margin-left:auto; flex:none; width:8px; height:8px;
+      border-top:2px solid currentColor; border-right:2px solid currentColor;
+      transform:rotate(45deg); opacity:.3;
+    }
+    .nav-links a.active::after{ opacity:.75; }
+    /* hairline between rows; never above the gold active row or right below it */
+    .nav-links a + a{ box-shadow:inset 0 1px 0 rgba(255,255,255,.05); }
+    .nav-links a.active{ box-shadow:0 6px 18px rgba(245,184,61,.35); }
+    .nav-links a.active + a{ box-shadow:none; }
+
+    html[data-theme="light"] .nav-links{
+      background:linear-gradient(180deg,#FFFFFF 0%,#FBF6EA 100%);
+      border-color:#E8E0D0;
+      box-shadow:0 30px 60px rgba(122,94,32,.22), 0 8px 22px rgba(122,94,32,.12), inset 0 1px 0 #FFFFFF;
+    }
+    html[data-theme="light"] .nav-links a + a{ box-shadow:inset 0 1px 0 rgba(28,25,23,.06); }
+    html[data-theme="light"] .nav-links a.active{ box-shadow:0 6px 18px rgba(184,134,11,.3); }
+    html[data-theme="light"] .nav-links a.active + a{ box-shadow:none; }
+  }
+
+  /* tablet: the panel hugs the right edge under the menu button instead of stretching full width */
+  @media (min-width:681px) and (max-width:1020px){
+    .nav-links{ left:auto; width:min(360px, 100%); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .nav-links.open{ animation:none !important; }
+  }
+  /* ===== Button samples — six medium-build styles to pick from.
+     Every primary/secondary/menu row below is medium: 40–46px tall, never the old 52px chunk.
+     The picked style is mirrored onto the site's real buttons via html[data-btnstyle]. ===== */
+  html{ overflow-x:clip; }
+
+  /* the picker must be tappable the moment it is reached — no scroll-reveal hiding */
+  #buttons .rv{ opacity:1 !important; transform:none !important; }
+
+  .bs-picked{
+    margin-top:16px; display:inline-block; padding:10px 16px; border-radius:12px;
+    background:var(--glass); border:1px dashed rgba(245,184,61,.55); color:var(--muted);
+    font-size:14.5px; font-weight:600;
+  }
+  .bs-picked b{ color:var(--gold-text); }
+  .bs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:28px; }
+  .bs-card{
+    background:var(--panel-grad); border:1px solid var(--line); border-radius:18px;
+    padding:20px; box-shadow:var(--panel-shadow); display:flex; flex-direction:column; gap:14px;
+    transition:border-color .25s, box-shadow .25s;
+  }
+  .bs-card.picked{ border-color:#F5B83D; box-shadow:0 0 0 1px #F5B83D, var(--panel-shadow-lift); }
+  .bs-head{ display:flex; gap:12px; align-items:flex-start; }
+  .bs-num{
+    flex:none; width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
+    background:var(--gold-grad); color:#241A02; font-family:var(--font-d); font-weight:800; font-size:17px;
+  }
+  .bs-head h3{ font-family:var(--font-d); font-size:18.5px; line-height:1.25; }
+  .bs-where{ color:var(--faint); font-size:13.5px; margin-top:2px; line-height:1.45; }
+  .bs-stage{
+    background:var(--glass2); border:1px solid var(--line); border-radius:14px; padding:16px;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  }
+  .bs-menu{ flex:1 1 100%; display:flex; flex-direction:column; gap:4px; margin-top:4px; }
+  .bs-row{ display:flex; align-items:center; color:var(--muted); font-weight:600; }
+  .bs-row.on{ background:var(--gold-grad); color:#241A02; font-weight:700; }
+  .bs-spec{ color:var(--faint); font-size:13px; }
+  .bs-pick{
+    margin-top:auto; align-self:flex-start; border:1px solid rgba(245,184,61,.6); background:transparent;
+    color:var(--gold-text); font-weight:700; font-size:14px; padding:10px 18px; min-height:42px; border-radius:10px;
+    transition:background .2s, color .2s, transform .15s;
+  }
+  .bs-pick:hover{ background:rgba(245,184,61,.12); }
+  .bs-pick:active{ transform:scale(.97); }
+  .bs-card.picked .bs-pick{ background:var(--gold-grad); color:#241A02; border-color:transparent; }
+
+  /* shared sample-button base */
+  .bs-p,.bs-s{ display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; white-space:nowrap; }
+  .bs-p{ background:var(--gold-grad); color:#241A02; }
+  .bs-s{ background:#14141C; border:1px solid rgba(255,255,255,.18); color:#F7F3E8; }
+  html[data-theme="light"] .bs-s{ background:#FFFFFF; border-color:#1C1917; color:#1C1917; }
+  html[data-theme="light"] .bs6-p{ background:rgba(184,134,11,.1); }
+
+  /* 1 · Modern Standard — 44px, 10px corners */
+  .bs1-p{ height:44px; padding:0 22px; border-radius:10px; font-size:15px; font-weight:600; box-shadow:0 6px 16px rgba(245,184,61,.3); }
+  .bs1-s{ height:44px; padding:0 20px; border-radius:10px; font-size:15px; font-weight:600; }
+  .bs1-row{ height:44px; padding:0 14px; border-radius:10px; font-size:14.5px; }
+  /* 2 · Soft Rounded — 46px, 14px corners */
+  .bs2-p{ height:46px; padding:0 24px; border-radius:14px; font-size:15px; font-weight:700; box-shadow:0 8px 20px rgba(245,184,61,.32); }
+  .bs2-s{ height:46px; padding:0 22px; border-radius:14px; font-size:15px; font-weight:600; }
+  .bs2-row{ height:46px; padding:0 15px; border-radius:13px; font-size:15px; }
+  /* 3 · Full Pill — 44px, round ends */
+  .bs3-p{ height:44px; padding:0 26px; border-radius:999px; font-size:15px; font-weight:600; box-shadow:0 6px 16px rgba(245,184,61,.3); }
+  .bs3-s{ height:44px; padding:0 24px; border-radius:999px; font-size:15px; font-weight:600; }
+  .bs3-row{ height:44px; padding:0 16px; border-radius:999px; font-size:14.5px; }
+  /* 4 · Compact Sharp — 40px, 6px corners */
+  .bs4-p{ height:40px; padding:0 18px; border-radius:6px; font-size:14px; font-weight:600; box-shadow:0 4px 12px rgba(245,184,61,.28); }
+  .bs4-s{ height:40px; padding:0 16px; border-radius:6px; font-size:14px; font-weight:600; }
+  .bs4-row{ height:40px; padding:0 12px; border-radius:6px; font-size:14px; }
+  /* 5 · Flat Minimal — 44px, 10px corners, solid colour, no shadow */
+  .bs5-p{ height:44px; padding:0 22px; border-radius:10px; font-size:15px; font-weight:600; background:#F0AC2C; box-shadow:none; }
+  .bs5-s{ height:44px; padding:0 20px; border-radius:10px; font-size:15px; font-weight:600; background:transparent; }
+  .bs5-row{ height:44px; padding:0 14px; border-radius:10px; font-size:14.5px; background:transparent; }
+  .bs5-row.on{ background:#F0AC2C; box-shadow:none; }
+  /* 6 · Outline Mix — 44px, 12px corners, gold outline + tint */
+  .bs6-p{ height:44px; padding:0 22px; border-radius:12px; font-size:15px; font-weight:700; background:rgba(245,184,61,.14); border:1.5px solid #F5B83D; color:var(--gold-text); box-shadow:none; }
+  .bs6-s{ height:44px; padding:0 20px; border-radius:12px; font-size:15px; font-weight:600; background:transparent; }
+  .bs6-row{ height:44px; padding:0 14px; border-radius:12px; font-size:14.5px; }
+
+  @media (max-width:1020px){ .bs-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:680px){
+    .bs-grid{ grid-template-columns:1fr; }
+    .bs-card{ padding:16px; }
+    .bs-p,.bs-s{ flex:1 1 auto; }
+    .bs-pick{ width:100%; text-align:center; }
+  }
+
+  /* ===== the picked style, applied to the site's real buttons ===== */
+  html[data-btnstyle="1"]{ --btn-radius:10px; }
+  html[data-btnstyle="1"] .btn-gold, html[data-btnstyle="1"] .btn-ghost, html[data-btnstyle="1"] .btn-gen, html[data-btnstyle="1"] .btn-reset{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; box-shadow:0 6px 16px rgba(245,184,61,.3); }
+  html[data-btnstyle="1"] .nav-cta{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; }
+  @media (max-width:1020px){ html[data-btnstyle="1"] .nav-links a{ min-height:44px; border-radius:10px; font-size:14.5px; } }
+
+  html[data-btnstyle="2"]{ --btn-radius:14px; }
+  html[data-btnstyle="2"] .btn-gold, html[data-btnstyle="2"] .btn-ghost, html[data-btnstyle="2"] .btn-gen, html[data-btnstyle="2"] .btn-reset{ min-height:46px; padding-top:0; padding-bottom:0; font-size:15px; }
+  html[data-btnstyle="2"] .nav-cta{ min-height:46px; padding-top:0; padding-bottom:0; font-size:15px; }
+  @media (max-width:1020px){ html[data-btnstyle="2"] .nav-links a{ min-height:46px; border-radius:13px; font-size:15px; } }
+
+  html[data-btnstyle="3"]{ --btn-radius:999px; }
+  html[data-btnstyle="3"] .btn-gold, html[data-btnstyle="3"] .btn-ghost, html[data-btnstyle="3"] .btn-gen, html[data-btnstyle="3"] .btn-reset{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; box-shadow:0 6px 16px rgba(245,184,61,.3); border-radius:999px; }
+  html[data-btnstyle="3"] .nav-cta{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; border-radius:999px; }
+  html[data-btnstyle="3"] .price .pcta{ border-radius:999px; }
+  @media (max-width:1020px){ html[data-btnstyle="3"] .nav-links a{ min-height:44px; border-radius:999px; font-size:14.5px; } }
+
+  html[data-btnstyle="4"]{ --btn-radius:6px; }
+  html[data-btnstyle="4"] .btn-gold, html[data-btnstyle="4"] .btn-ghost, html[data-btnstyle="4"] .btn-gen, html[data-btnstyle="4"] .btn-reset{ min-height:40px; padding-top:0; padding-bottom:0; font-size:14px; font-weight:600; box-shadow:0 4px 12px rgba(245,184,61,.28); border-radius:6px; }
+  html[data-btnstyle="4"] .nav-cta{ min-height:40px; padding-top:0; padding-bottom:0; font-size:14px; font-weight:600; border-radius:6px; }
+  html[data-btnstyle="4"] .price .pcta{ border-radius:6px; }
+  @media (max-width:1020px){ html[data-btnstyle="4"] .nav-links a{ min-height:40px; border-radius:6px; font-size:14px; } }
+
+  html[data-btnstyle="5"]{ --btn-radius:10px; }
+  html[data-btnstyle="5"] .btn-gold, html[data-btnstyle="5"] .btn-gen{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; background:#F0AC2C; box-shadow:none; border-radius:10px; }
+  html[data-btnstyle="5"] .btn-ghost, html[data-btnstyle="5"] .btn-reset{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; background:transparent; box-shadow:none; border-radius:10px; }
+  html[data-btnstyle="5"] .nav-cta{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; background:#F0AC2C; box-shadow:none; border-radius:10px; }
+  html[data-btnstyle="5"] .nav-links a.active{ background:#F0AC2C; box-shadow:none; }
+  html[data-btnstyle="5"] .price .pcta{ border-radius:10px; }
+  html[data-btnstyle="5"] .price.best .pcta{ background:#F0AC2C; box-shadow:none; }
+  @media (max-width:1020px){ html[data-btnstyle="5"] .nav-links a{ min-height:44px; border-radius:10px; font-size:14.5px; } html[data-btnstyle="5"] .nav-links a.active{ box-shadow:none; } }
+
+  html[data-btnstyle="6"]{ --btn-radius:12px; }
+  html[data-btnstyle="6"] .btn-gold, html[data-btnstyle="6"] .btn-gen{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:700; background:rgba(245,184,61,.14); border:1.5px solid #F5B83D; color:var(--gold-text); box-shadow:none; border-radius:12px; }
+  html[data-btnstyle="6"] .btn-ghost, html[data-btnstyle="6"] .btn-reset{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:600; background:transparent; border-radius:12px; }
+  html[data-btnstyle="6"] .nav-cta{ min-height:44px; padding-top:0; padding-bottom:0; font-size:15px; font-weight:700; background:rgba(245,184,61,.14); border:1.5px solid #F5B83D; color:var(--gold-text); box-shadow:none; border-radius:12px; }
+  html[data-btnstyle="6"] .price .pcta{ border-radius:12px; }
+  html[data-btnstyle="6"] .price.best .pcta{ background:rgba(245,184,61,.14); border:1.5px solid #F5B83D; color:var(--gold-text); }
+  @media (max-width:1020px){ html[data-btnstyle="6"] .nav-links a{ min-height:44px; border-radius:12px; font-size:14.5px; } }
+  /* ===== The picked button standard, desktop and mobile alike —
+     Sample 2: 48px height, 0 26px side padding, 8px corners, 15px bold text.
+     Desktop: buttons only — the tab/nav menu stays exactly as it is. ===== */
+  .btn-gold,.btn-ghost,.btn-gen,.btn-reset,.price .pcta,.wa-link{
+    min-height:48px; padding:0 26px; font-size:15px; font-weight:700; border-radius:8px; max-width:100%;
+  }
+  .nav-cta{ min-height:48px; padding:0 20px; font-size:15px; border-radius:8px; }
+
+  /* ===== Mobile only (<=1020px): Menu B — every menu item its own separate
+     button, no slab panel behind the links. Open/close behaviour unchanged,
+     desktop menu untouched. ===== */
+  @media (max-width:1020px){
+    .nav-links{ background:transparent; border:none; box-shadow:none; padding:0; gap:8px; border-radius:0; }
+    .nav-links a{
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:48px; padding:0 14px; border-radius:11px;
+      background:#1E1E24; border:1px solid #2A2A32; color:#fff; font-size:14px; font-weight:600;
+    }
+    .nav-links a::after{ content:"›"; font-size:19px; font-weight:400; line-height:1; opacity:.55; }
+    .nav-links a:hover{ background:#26262E; color:#fff; }
+    .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; box-shadow:0 4px 14px rgba(245,184,61,.3); }
+    .nav-links a.active::after{ opacity:.85; }
+    html[data-theme="light"] .nav-links{ background:transparent; border:none; box-shadow:none; }
+    html[data-theme="light"] .nav-links a{ background:#FFFFFF; border-color:#E0D5BC; color:#1C1917; }
+    html[data-theme="light"] .nav-links a:hover{ background:#FBF6E9; color:#1C1917; }
+    html[data-theme="light"] .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; }
+  }
 ]]></b:skin>
 </head>
 <body>
@@ -975,7 +1219,8 @@
     </button>
     <a class="nav-cta" href="https://github.com/mohdkhan-lab/flowstudio-flutter/releases/download/public-v1.0.9/FlowStudio_Setup.exe">Download Free</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="tabTrack">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-burger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
   </div>
 </header>
@@ -1064,6 +1309,9 @@
       </div>
     </div>
   </div>
+
+  <!-- ================= BUTTON SAMPLES ================= -->
+  
 
   <!-- ================= STATS ================= -->
   <section style="padding-top:56px;">
@@ -1629,16 +1877,24 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
   var btn = document.getElementById("menuBtn");
   var nav = document.getElementById("tabTrack");
   if (!btn || !nav) return;
+  function close(){
+    nav.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Open menu");
+  }
   btn.addEventListener("click", function(){
     var open = nav.classList.toggle("open");
     btn.setAttribute("aria-expanded", open ? "true" : "false");
     btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
   nav.querySelectorAll("a").forEach(function(a){
-    a.addEventListener("click", function(){
-      nav.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-    });
+    a.addEventListener("click", close);
+  });
+  document.addEventListener("click", function(e){
+    if (nav.classList.contains("open") && !nav.contains(e.target) && !btn.contains(e.target)) close();
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && nav.classList.contains("open")){ close(); btn.focus(); }
   });
 })();
 //]]>
