@@ -1165,6 +1165,8 @@
     min-height:48px; padding:0 26px; font-size:15px; font-weight:700; border-radius:8px; max-width:100%;
   }
   .nav-cta{ min-height:48px; padding:0 20px; font-size:15px; border-radius:8px; }
+  /* hero pair: same standard — the mobile hero rule's taller padding must not win */
+  .hero-cta .btn-gold,.hero-cta .btn-ghost{ padding-top:0; padding-bottom:0; font-size:15px; }
 
   /* ===== Mobile only (<=1020px): Menu B — every menu item its own separate
      button, no slab panel behind the links. Open/close behaviour unchanged,
@@ -1176,13 +1178,15 @@
       min-height:48px; padding:0 14px; border-radius:11px;
       background:#1E1E24; border:1px solid #2A2A32; color:#fff; font-size:14px; font-weight:600;
     }
-    .nav-links a::after{ content:"›"; font-size:19px; font-weight:400; line-height:1; opacity:.55; }
+    .nav-links a::after{ content:"›"; font-size:19px; font-weight:400; line-height:1; opacity:.55; width:auto; height:auto; border:none; transform:none; margin-left:0; }
+    .nav-links a:not(.active){ box-shadow:none; }
     .nav-links a:hover{ background:#26262E; color:#fff; }
     .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; box-shadow:0 4px 14px rgba(245,184,61,.3); }
     .nav-links a.active::after{ opacity:.85; }
     html[data-theme="light"] .nav-links{ background:transparent; border:none; box-shadow:none; }
     html[data-theme="light"] .nav-links a{ background:#FFFFFF; border-color:#E0D5BC; color:#1C1917; }
     html[data-theme="light"] .nav-links a:hover{ background:#FBF6E9; color:#1C1917; }
+    html[data-theme="light"] .nav-links a:not(.active){ box-shadow:none; }
     html[data-theme="light"] .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; }
   }
 ]]></b:skin>
