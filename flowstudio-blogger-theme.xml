@@ -1989,7 +1989,14 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
 </b:if>
 <b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/privacy-policy.html"'>
 <section id="privacy" class="page-sec">
-    
+    <div class="wrap">
+      <span class="kicker rv" style="color:#FFCE54">Privacy &amp; terms</span>
+      <h2 class="rv d1">Plain words, <span class="grad">no fine-print tricks</span></h2>
+      <div class="legal-grid">
+        <div class="legal-card rv"><h3>Privacy — your accounts stay yours</h3><p>Your Google accounts sign in on your own PC and stay there. FlowStudio does not upload your account passwords anywhere, and your prompts and videos are yours — they are generated on your accounts and saved on your computer. We never sell your data. The only things the service itself handles are your sign-up name and email, and the key issued to you, so activation and support can work.</p></div>
+        
+      </div>
+    </div>
   </section>
 <section id="download">
     <div class="wrap">
@@ -2010,14 +2017,16 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
   </section>
 </b:if>
 <b:if cond='data:blog.url == "https://flowstudioapp.blogspot.com/p/terms-of-use.html"'>
-<section id="privacy" class="page-sec"><div class="wrap">
+<section id="privacy" class="page-sec">
+    <div class="wrap">
       <span class="kicker rv" style="color:#FFCE54">Privacy &amp; terms</span>
       <h2 class="rv d1">Plain words, <span class="grad">no fine-print tricks</span></h2>
       <div class="legal-grid">
-        <div class="legal-card rv"><h3>Privacy — your accounts stay yours</h3><p>Your Google accounts sign in on your own PC and stay there. FlowStudio does not upload your account passwords anywhere, and your prompts and videos are yours — they are generated on your accounts and saved on your computer. We never sell your data. The only things the service itself handles are your sign-up name and email, and the key issued to you, so activation and support can work.</p></div>
+        
         <div class="legal-card rv d1"><h3>Terms — the short version</h3><p>One key activates on one PC; sharing a key does not extend it, and a key can be reset for a genuine PC change through support. The free trial runs 7 days with full features. Paid plans apply only when they open — until then the app is free. You are responsible for the videos you create and for using your own accounts within the video service's own rules.</p></div>
       </div>
-    </div></section>
+    </div>
+  </section>
 <section id="download">
     <div class="wrap">
       <div class="dl-panel rv">
