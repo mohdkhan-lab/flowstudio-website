@@ -2120,7 +2120,7 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
 
   /* duplicate marquee content for a seamless loop */
   var track = document.getElementById("marqueeTrack");
-  track.innerHTML += track.innerHTML;
+  if (track){ track.innerHTML += track.innerHTML; }
 
   /* ---------- scroll reveals + counters ---------- */
   function animateCount(el){
@@ -2181,11 +2181,11 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
     scenes.forEach(function(s, j){ s.classList.toggle("on", j === i); });
     dots.forEach(function(d, j){ d.classList.toggle("on", j === i); });
     clearInterval(splashTimer); clearInterval(keyTimer);
-    if (i === 0){
+    if (i === 0 && splashStatus){
       var li = 0; splashStatus.textContent = splashLines[0];
       splashTimer = setInterval(function(){ li = (li + 1) % splashLines.length; splashStatus.textContent = splashLines[li]; }, 950);
     }
-    if (i === 1){
+    if (i === 1 && keyType){
       var full = "FS-7K2P-9QXD-4MTA", shown = 4;
       keyType.textContent = full.slice(0, 4) + "-••••-••••-••••";
       keyTimer = setInterval(function(){
@@ -2242,7 +2242,7 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       setTile(tile, "✓ Saved to Downloads", "#3ED598", 100);
     }, delay + 3000);
   }
-  genBtn.addEventListener("click", function(){
+  genBtn && genBtn.addEventListener("click", function(){
     if (running) return;
     running = true; genBtn.disabled = true;
     tiles.forEach(function(t){ t.classList.remove("done"); });
@@ -2260,7 +2260,7 @@ A street vendor arranges marigolds at dawn, steam rising from his tea stall</tex
       demoStatus.textContent = "Done — 3 videos saved to Downloads · 21 credits used · 179 left.";
     }, 3000 + 2 * 450 + 350);
   });
-  resetBtn.addEventListener("click", resetDemo);
+  if (resetBtn){ resetBtn.addEventListener("click", resetDemo); }
 
   /* ---------- scroll progress bar + pill-tab indicator ---------- */
   var pBar = document.getElementById("progressBar");
