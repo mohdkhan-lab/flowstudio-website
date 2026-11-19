@@ -1169,22 +1169,32 @@
   .hero-cta .btn-gold,.hero-cta .btn-ghost{ padding-top:0; padding-bottom:0; font-size:15px; }
 
   /* ===== Mobile only (<=1020px): Menu B — every menu item its own separate
-     button, no slab panel behind the links. Open/close behaviour unchanged,
-     desktop menu untouched. ===== */
+     button, sitting on ONE solid opaque panel so the page behind the open
+     menu never shows through the gaps between the buttons.
+     Open/close behaviour unchanged, desktop menu untouched. ===== */
   @media (max-width:1020px){
-    .nav-links{ background:transparent; border:none; box-shadow:none; padding:0; gap:8px; border-radius:0; }
+    .nav-links{
+      background:linear-gradient(180deg,#1A1A24 0%,#12121A 100%);
+      border:1px solid rgba(255,255,255,.13); border-radius:18px;
+      box-shadow:0 30px 60px rgba(0,0,0,.6), 0 8px 22px rgba(0,0,0,.45);
+      padding:10px; gap:8px;
+    }
     .nav-links a{
       display:flex; align-items:center; justify-content:space-between;
       min-height:48px; padding:0 14px; border-radius:11px;
-      background:#1E1E24; border:1px solid #2A2A32; color:#fff; font-size:14px; font-weight:600;
+      background:#26262F; border:1px solid #3A3A45; color:#fff; font-size:14px; font-weight:600;
     }
     .nav-links a::after{ content:"\203A"; font-size:19px; font-weight:400; line-height:1; opacity:.55; width:auto; height:auto; border:none; transform:none; margin-left:0; }
     .nav-links a:not(.active){ box-shadow:none; }
-    .nav-links a:hover{ background:#26262E; color:#fff; }
+    .nav-links a:hover{ background:#30303B; color:#fff; }
     .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; box-shadow:0 4px 14px rgba(245,184,61,.3); }
     .nav-links a.active::after{ opacity:.85; }
-    html[data-theme="light"] .nav-links{ background:transparent; border:none; box-shadow:none; }
-    html[data-theme="light"] .nav-links a{ background:#FFFFFF; border-color:#E0D5BC; color:#1C1917; }
+    html[data-theme="light"] .nav-links{
+      background:linear-gradient(180deg,#FFFFFF 0%,#FBF6EA 100%);
+      border:1px solid #E8E0D0;
+      box-shadow:0 30px 60px rgba(122,94,32,.25), 0 8px 22px rgba(122,94,32,.14);
+    }
+    html[data-theme="light"] .nav-links a{ background:#FFFFFF; border-color:#D9CCAB; color:#1C1917; }
     html[data-theme="light"] .nav-links a:hover{ background:#FBF6E9; color:#1C1917; }
     html[data-theme="light"] .nav-links a:not(.active){ box-shadow:none; }
     html[data-theme="light"] .nav-links a.active{ background:linear-gradient(120deg,#F2B544,#DD941F); border-color:transparent; color:#241A02; }
